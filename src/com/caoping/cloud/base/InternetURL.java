@@ -19,7 +19,6 @@ public class InternetURL {
     //多媒体文件上传接口
 //    public static final String UPLOAD_TOKEN = INTERNAL + "token.json";
 //    public static final String QINIU_SPACE = "paopao-pic";
-
     //登录
     public static final String LOGIN__URL = INTERNAL + "memberLogin.do";
     //注册第一步
