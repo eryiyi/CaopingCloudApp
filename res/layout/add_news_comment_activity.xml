@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:id="@+id/main"
+              android:background="@color/main_bg"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <include
+            android:layout_width="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_height="wrap_content"
+            layout="@layout/top_liner"/>
+    <TextView android:layout_width="match_parent"
+              android:text="回复：张三"
+              android:id="@+id/reply"
+              android:textColor="@color/text_color"
+              android:padding="12sp"
+              android:layout_height="wrap_content"/>
+    <EditText
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="200dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/et_bule_bg"
+            android:textSize="16sp"
+            android:gravity="top"
+            android:hint="请输入评论内容......"
+            android:padding="10dp"
+            android:textColor="#ff000000"/>
+</LinearLayout>

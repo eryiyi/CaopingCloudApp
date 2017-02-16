@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:padding="8dp"
+              android:background="@drawable/btn_white_shape"
+              android:layout_width="wrap_content"
+              android:layout_height="220dp">
+    <TextView android:layout_width="wrap_content"
+              android:text="1"
+              android:drawableLeft="@drawable/sm_top"
+              android:layout_marginLeft="8dp"
+              android:drawablePadding="5dp"
+              android:gravity="center"
+              android:layout_alignParentRight="true"
+              android:textColor="@color/red_p"
+              android:textSize="15sp"
+              android:textStyle="bold"
+              android:id="@+id/title"
+              android:layout_height="wrap_content"/>
+    <TextView android:layout_width="wrap_content"
+              android:text="江苏· 沭阳"
+              android:id="@+id/name"
+              android:layout_below="@+id/title"
+              android:textColor="@color/text_color"
+              android:textSize="15sp"
+              android:layout_height="wrap_content"/>
+    <TextView android:layout_width="wrap_content"
+              android:text="盛博农业开发有限公司"
+              android:id="@+id/company"
+              android:layout_marginTop="3dp"
+              android:layout_below="@+id/name"
+              android:singleLine="true"
+              android:textColor="@color/text_color"
+              android:textSize="14sp"
+              android:layout_height="wrap_content"/>
+    <TextView android:layout_width="wrap_content"
+              android:text="销售 1004"
+              android:id="@+id/count"
+              android:layout_marginTop="3dp"
+              android:layout_below="@+id/company"
+              android:singleLine="true"
+              android:textColor="@color/red_p"
+              android:textSize="14sp"
+              android:layout_height="wrap_content"/>
+    <ImageView
+            android:id="@+id/cover"
+            android:layout_marginTop="8dp"
+            android:layout_below="@+id/count"
+            android:scaleType="centerCrop"
+            android:src="@drawable/no_pic"
+            android:layout_width="120dp"
+            android:layout_height="120dp"/>
+
+
+</RelativeLayout>

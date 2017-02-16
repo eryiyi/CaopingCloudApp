@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:padding="8dp"
+              android:background="@color/white"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+            <TextView android:layout_width="wrap_content"
+                      android:textColor="@color/text_color"
+                      android:textStyle="bold"
+                      android:layout_gravity="center"
+                      android:text="标题"
+                      android:id="@+id/newsTitle"
+                      android:textSize="18sp"
+                      android:layout_height="wrap_content"/>
+
+           <LinearLayout android:layout_width="match_parent"
+                         android:orientation="horizontal"
+                         android:gravity="right"
+                         android:padding="3dp"
+                         android:layout_height="wrap_content">
+               <TextView android:layout_width="wrap_content"
+                         android:textColor="@color/text_color"
+                         android:text="沭阳盛博有限公司"
+                         android:id="@+id/company"
+                         android:textSize="15sp"
+                         android:layout_height="wrap_content"/>
+               <TextView android:layout_width="wrap_content"
+                         android:textColor="@color/blue"
+                         android:id="@+id/name"
+                         android:text="zhangsn"
+                         android:layout_marginLeft="8dp"
+                         android:textSize="18sp"
+                         android:layout_height="wrap_content"/>
+           </LinearLayout>
+
+            <LinearLayout android:layout_width="match_parent"
+                          android:orientation="horizontal"
+                          android:layout_marginTop="5dp"
+                          android:layout_height="wrap_content">
+
+                <TextView android:layout_width="wrap_content"
+                          android:textColor="@color/text_color"
+                          android:id="@+id/dateline"
+                          android:text="前天"
+                          android:layout_marginLeft="3dp"
+                          android:layout_weight="1"
+                          android:textSize="15sp"
+                          android:layout_height="wrap_content"/>
+                <TextView android:layout_width="wrap_content"
+                          android:drawablePadding="8dp"
+                          android:id="@+id/btn_favour"
+                          android:layout_alignParentBottom="true"
+                          android:textColor="@color/text_color"
+                          android:layout_marginRight="8dp"
+                          android:drawableLeft="@drawable/sm_i_fav"
+                          android:layout_height="wrap_content"/>
+                <TextView android:layout_width="wrap_content"
+                          android:id="@+id/btn_comment"
+                          android:drawablePadding="8dp"
+                          android:textColor="@color/text_color"
+                          android:drawableLeft="@drawable/sm_i_comment"
+                          android:layout_height="wrap_content"/>
+            </LinearLayout>
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:id="@+id/ad"
+            android:layout_marginTop="8dp"
+            android:layout_height="200dp">
+        <android.support.v4.view.ViewPager
+                android:id="@+id/viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+        </android.support.v4.view.ViewPager>
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingBottom="3dp"
+                android:paddingTop="3dp">
+            <LinearLayout
+                    android:id="@+id/viewGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:orientation="horizontal"
+                    android:paddingBottom="1dp"
+                    android:paddingTop="1dp">
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+    <TextView android:layout_width="match_parent"
+              android:id="@+id/content"
+              android:layout_marginTop="8dp"
+              android:textSize="16sp"
+              android:textColor="@color/text_color"
+              android:lineSpacingMultiplier="1.4"
+              android:layout_height="wrap_content"/>
+    <TextView android:layout_width="wrap_content"
+              android:textColor="@color/text_color"
+              android:id="@+id/location"
+              android:layout_marginTop="6dp"
+              android:drawablePadding="6dp"
+              android:drawableLeft="@drawable/sm_shop_location"
+              android:text="山东滨州开发区"
+              android:layout_gravity="right"
+              android:textSize="15sp"
+              android:layout_height="wrap_content"/>
+    <View android:layout_width="match_parent"
+          android:background="@color/gray"
+          android:layout_marginTop="6dp"
+          android:layout_height="0.1dp"></View>
+</LinearLayout>

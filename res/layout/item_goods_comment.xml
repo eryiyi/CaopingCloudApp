@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:padding="12dp"
+              android:background="@drawable/btn_white_shape">
+    <TextView android:layout_width="match_parent"
+              android:layout_alignParentTop="true"
+              android:textSize="16sp"
+              android:textColor="@color/green"
+              android:id="@+id/cloud_caoping_title"
+              android:layout_height="wrap_content"/>
+
+            <com.caoping.cloud.widget.CircleImageView
+                    android:layout_width="45dp"
+                    android:layout_below="@+id/cloud_caoping_title"
+                    android:id="@+id/cover"
+                    android:src="@drawable/ic_launcher"
+                    android:layout_height="45dp"/>
+
+            <TextView android:layout_width="wrap_content"
+                      android:layout_marginLeft="5dp"
+                      android:layout_below="@+id/cloud_caoping_title"
+                      android:layout_marginTop="8dp"
+                      android:layout_toRightOf="@+id/cover"
+                      android:id="@+id/name"
+                      android:textColor="@color/red"
+                      android:layout_height="wrap_content"/>
+            <TextView android:layout_width="wrap_content"
+                      android:id="@+id/dateline"
+                      android:textColor="@color/text_color_two"
+                      android:layout_marginLeft="5dp"
+                      android:layout_marginTop="3dp"
+                      android:layout_below="@+id/name"
+                      android:layout_toRightOf="@+id/cover"
+                      android:layout_height="wrap_content"/>
+            <TextView android:layout_width="wrap_content"
+                      android:id="@+id/cont"
+                      android:layout_marginTop="5dp"
+                      android:textColor="@color/text_color_two"
+                      android:layout_marginLeft="6dp"
+                      android:layout_below="@+id/cover"
+                      android:lineSpacingMultiplier="1.2"
+                      android:layout_height="wrap_content"/>
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_below="@+id/cont"
+                  android:id="@+id/star"
+                  android:layout_marginTop="5dp"
+                  android:layout_marginLeft="6dp"
+                  android:layout_height="wrap_content">
+        <RatingBar android:layout_width="wrap_content"
+                   android:isIndicator="true"
+                   style="?android:attr/ratingBarStyleSmall"
+                   android:numStars="5"
+                   android:id="@+id/startNumber"
+                   android:rating="0"
+                   android:stepSize="1"
+                   android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <com.caoping.cloud.widget.PictureGridview
+            android:id="@+id/lstv"
+            android:layout_width="wrap_content"
+            android:layout_below="@+id/star"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:horizontalSpacing="4dip"
+            android:numColumns="3"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="4dip"
+            android:padding="4dip"/>
+
+</RelativeLayout>
+
+

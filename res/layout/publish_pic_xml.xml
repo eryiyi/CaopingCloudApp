@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:id="@+id/main"
+              android:background="@color/white"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <!-- head开始 -->
+    <RelativeLayout
+            android:layout_width="fill_parent"
+            android:background="@color/green"
+            android:layout_height="@dimen/top_title_height">
+
+        <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+            <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="8dip"
+                    android:text="发头条"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"/>
+        </LinearLayout>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:id="@+id/back"
+                android:paddingLeft="10dp"
+                android:drawableLeft="@drawable/md_main_back"
+                android:text="返回"
+                android:textColor="@color/white"
+                android:gravity="center_vertical"
+                android:paddingRight="10dp"
+                />
+
+        <TextView
+                android:id="@+id/publish_pic_run"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:layout_marginRight="10dp"
+                android:text="发布"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+    <!-- head结束 -->
+    <com.caoping.cloud.widget.ReboundScrollView android:layout_width="match_parent"
+                                                android:layout_height="match_parent">
+        <LinearLayout android:layout_width="match_parent"
+                      android:orientation="vertical"
+                      android:layout_height="wrap_content"
+                      android:layout_weight="1">
+            <LinearLayout android:layout_width="match_parent"
+                          android:orientation="vertical"
+                          android:layout_weight="1"
+                          android:layout_height="wrap_content">
+                <EditText
+                        android:id="@+id/msg_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxHeight="200dp"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:paddingBottom="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@null"
+                        android:textSize="16sp"
+                        android:gravity="top"
+                        android:hint="头条标题......"
+                        android:padding="10dp"
+                        android:textColor="#ff000000"/>
+                <View android:layout_width="match_parent"
+                      android:layout_marginTop="8dp"
+                      android:background="@color/gray"
+                      android:layout_height="0.1dp"></View>
+                <RelativeLayout android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                    <EditText
+                            android:id="@+id/face_content"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="80dp"
+                            android:maxHeight="200dp"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="5dp"
+                            android:paddingBottom="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@null"
+                            android:textSize="16sp"
+                            android:gravity="top"
+                            android:hint="头条内容......"
+                            android:padding="10dp"
+                            android:textColor="#ff000000"/>
+                </RelativeLayout>
+                <View android:layout_width="match_parent"
+                      android:layout_marginTop="8dp"
+                      android:background="@color/gray"
+                      android:layout_height="0.1dp"></View>
+                <com.caoping.cloud.widget.NoScrollGridView
+                        android:id="@+id/publish_moopd_gridview_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:listSelector="@drawable/selector_pressed_gray"
+                        android:horizontalSpacing="5dip"
+                        android:numColumns="4"
+                        android:padding="10dip"
+                        android:verticalSpacing="5dip"/>
+                <LinearLayout android:layout_width="match_parent"
+                              android:orientation="horizontal"
+                              android:layout_height="wrap_content">
+                    <TextView android:layout_width="wrap_content"
+                              android:layout_weight="1"
+                              android:text="山东 滨州 惠民"
+                              android:padding="8dp"
+                              android:layout_marginLeft="8dp"
+                              android:id="@+id/address"
+                              android:drawablePadding="10dp"
+                              android:gravity="center_vertical"
+                              android:drawableLeft="@drawable/sm_location"
+                              android:textSize="14sp"
+                              android:textColor="@color/text_color"
+                              android:layout_height="wrap_content"/>
+                    <CheckBox android:layout_width="wrap_content"
+                              android:id="@+id/checkbox"
+                              android:layout_marginRight="8dp"
+                              android:layout_height="wrap_content"/>
+                </LinearLayout>
+            </LinearLayout>
+            <View android:layout_width="match_parent"
+                  android:layout_height="0.5dp"
+                  android:background="#d1d1d1"/>
+
+            <LinearLayout
+                    android:gravity="bottom"
+                    android:id="@+id/rl_bottom"
+                    android:layout_width="fill_parent"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true">
+                <RelativeLayout
+                        android:id="@+id/rl_input"
+                        android:layout_width="fill_parent"
+                        android:layout_height="match_parent"
+                        android:paddingBottom="10dp"
+                        android:paddingTop="10dp"
+                        android:background="@color/white">
+                    <ImageButton
+                            android:id="@+id/send_btn_face_normal"
+                            android:layout_width="40dp"
+                            android:visibility="gone"
+                            android:layout_height="40dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="15dip"
+                            />
+                    <ImageButton
+                            android:id="@+id/send_btn_face_enable"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="15dip"
+                            android:visibility="invisible"/>
+                    <ImageButton
+                            android:id="@+id/add_pic"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="20dip"
+                            android:background="@drawable/aka"
+                            />
+                    <TextView
+                            android:id="@+id/count"
+                            android:visibility="gone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:gravity="center"
+                            android:text="500"
+                            android:paddingRight="8dp"
+                            android:textColor="@color/viewfinder_laser"
+                            android:textSize="12.0sp"/>
+                </RelativeLayout>
+                <RelativeLayout
+                        android:id="@+id/ll_facechoose"
+                        android:layout_width="fill_parent"
+                        android:visibility="gone"
+                        android:layout_height="124dip"
+                        android:layout_below="@id/rl_input"
+                        android:background="#f6f5f5">
+
+                    <android.support.v4.view.ViewPager
+                            android:id="@+id/vp_contains"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                    </android.support.v4.view.ViewPager>
+
+                    <LinearLayout
+                            android:id="@+id/iv_image"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginBottom="6dip"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+                    </LinearLayout>
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </com.caoping.cloud.widget.ReboundScrollView>
+
+</LinearLayout>

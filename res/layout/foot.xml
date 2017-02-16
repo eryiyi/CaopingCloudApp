@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:background="@color/white"
+              android:layout_width="match_parent"
+              android:layout_height="50dp">
+
+    <LinearLayout android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:id="@+id/foot_liner_one"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_height="50dp">
+        <ImageView android:layout_width="wrap_content"
+                   android:src="@drawable/nav_home_p"
+                   android:id="@+id/foot_one"
+                   android:layout_height="wrap_content"/>
+        <!--<TextView android:layout_width="wrap_content"-->
+                  <!--android:text="首页"-->
+                  <!--android:id="@+id/foot_one_text"-->
+                  <!--android:textColor="@color/text_color"-->
+                  <!--android:layout_marginTop="5dp"-->
+                  <!--android:layout_height="wrap_content"/>-->
+    </LinearLayout>
+
+    <LinearLayout android:layout_width="wrap_content"
+                  android:layout_weight="1"
+                  android:id="@+id/foot_liner_two"
+                  android:layout_gravity="center"
+                  android:gravity="center"
+                  android:orientation="vertical"
+                  android:layout_height="50dp">
+        <ImageView android:layout_width="wrap_content"
+                   android:id="@+id/foot_two"
+                   android:src="@drawable/nav_cat"
+                   android:layout_height="wrap_content"/>
+        <!--<TextView android:layout_width="wrap_content"-->
+                  <!--android:text="分类"-->
+                  <!--android:id="@+id/foot_two_text"-->
+                  <!--android:textColor="@color/text_color"-->
+                  <!--android:layout_marginTop="5dp"-->
+                  <!--android:layout_height="wrap_content"/>-->
+    </LinearLayout>
+
+    <LinearLayout android:layout_width="wrap_content"
+                  android:layout_weight="1"
+                  android:id="@+id/btn_write"
+                  android:layout_gravity="center"
+                  android:gravity="center"
+                  android:orientation="vertical"
+                  android:layout_height="50dp">
+        <ImageView android:layout_width="wrap_content"
+                   android:id="@+id/foot_write"
+                   android:src="@drawable/nav_new"
+                   android:layout_height="wrap_content"/>
+        <!--<TextView android:layout_width="wrap_content"-->
+        <!--android:text="分类"-->
+        <!--android:id="@+id/foot_two_text"-->
+        <!--android:textColor="@color/text_color"-->
+        <!--android:layout_marginTop="5dp"-->
+        <!--android:layout_height="wrap_content"/>-->
+    </LinearLayout>
+
+    <LinearLayout android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:id="@+id/foot_liner_three"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:layout_height="50dp">
+
+        <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center">
+            <ImageView android:layout_width="wrap_content"
+                       android:id="@+id/foot_three"
+                       android:layout_centerInParent="true"
+                       android:src="@drawable/nav_msg"
+                       android:layout_height="wrap_content"/>
+            <TextView
+                    android:id="@+id/unread_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/unread_count_bg"
+                    android:gravity="center"
+                    android:visibility="gone"
+                    android:layout_alignRight="@+id/foot_three"
+                    android:textColor="@android:color/white"
+                    android:textSize="12sp"
+                    />
+        </RelativeLayout>
+        <!--<TextView android:layout_width="wrap_content"-->
+                  <!--android:text="消息"-->
+                  <!--android:id="@+id/foot_three_text"-->
+                  <!--android:textColor="@color/text_color"-->
+                  <!--android:layout_marginTop="5dp"-->
+                  <!--android:layout_height="wrap_content"/>-->
+    </LinearLayout>
+
+    <LinearLayout android:layout_width="wrap_content"
+                  android:layout_weight="1"
+                  android:id="@+id/foot_liner_four"
+                  android:layout_gravity="center"
+                  android:gravity="center"
+                  android:orientation="vertical"
+                  android:layout_height="50dp">
+        <ImageView android:layout_width="wrap_content"
+                   android:id="@+id/foot_four"
+                   android:src="@drawable/nav_mine"
+                   android:layout_height="wrap_content"/>
+        <!--<TextView android:layout_width="wrap_content"-->
+                  <!--android:text="我的"-->
+                  <!--android:id="@+id/foot_four_text"-->
+                  <!--android:textColor="@color/text_color"-->
+                  <!--android:layout_marginTop="5dp"-->
+                  <!--android:layout_height="wrap_content"/>-->
+    </LinearLayout>
+
+</LinearLayout>

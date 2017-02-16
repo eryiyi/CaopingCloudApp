@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:background="@color/main_bg"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <include
+            android:layout_width="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_height="wrap_content"
+            layout="@layout/top_liner"/>
+
+    <LinearLayout android:layout_width="match_parent"
+                  android:orientation="horizontal"
+                  android:layout_gravity="center"
+                  android:gravity="center"
+                  android:layout_height="match_parent">
+        <LinearLayout android:layout_width="wrap_content"
+                      android:orientation="vertical"
+                      android:id="@+id/liner_one"
+                      android:layout_gravity="center"
+                      android:padding="8dp"
+                      android:gravity="center"
+                      android:layout_height="wrap_content">
+            <ImageView android:layout_width="80dp"
+                       android:src="@drawable/lg_icon_hc"
+                       android:layout_height="80dp"/>
+            <TextView android:layout_width="wrap_content"
+                      android:text="我是车主"
+                      android:padding="8dp"
+                      android:textSize="16sp"
+                      android:textColor="@color/text_color"
+                      android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <LinearLayout android:layout_width="wrap_content"
+                      android:orientation="vertical"
+                      android:id="@+id/liner_two"
+                      android:padding="8dp"
+                      android:layout_marginLeft="15dp"
+                      android:layout_gravity="center"
+                      android:gravity="center"
+                      android:layout_height="wrap_content">
+            <ImageView android:layout_width="80dp"
+                       android:src="@drawable/lg_icon_hy"
+                       android:layout_height="80dp"/>
+            <TextView android:layout_width="wrap_content"
+                      android:text="我是货主"
+                      android:padding="8dp"
+                      android:textSize="16sp"
+                      android:textColor="@color/text_color"
+                      android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!--<Button android:layout_width="match_parent"-->
+            <!--android:textSize="18sp"-->
+            <!--android:layout_marginTop="15dp"-->
+            <!--android:text="下一步"-->
+            <!--android:onClick="nextAction"-->
+            <!--android:layout_marginRight="35dp"-->
+            <!--android:layout_marginLeft="35dp"-->
+            <!--android:padding="15dp"-->
+            <!--android:textColor="@color/white"-->
+            <!--android:background="@drawable/btn_green_radio_shape"-->
+            <!--android:layout_height="wrap_content"/>-->
+
+</LinearLayout>

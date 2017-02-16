@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:background="@color/main_bg"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <include
+            android:layout_width="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_height="wrap_content"
+            layout="@layout/top_liner"/>
+
+
+    <!--//发了多少草坪数据 机械数据 草种数据-->
+    <!--//发了多少物流数据-->
+    <!--//发了多少新闻-->
+    <!--//有多少订单-->
+    <!--//有多少人关注你-->
+    <!--//你的公司在名企排行中排第几-->
+    <com.caoping.cloud.widget.PictureGridview
+            android:id="@+id/gridView"
+            android:layout_marginTop="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:horizontalSpacing="2dip"
+            android:numColumns="3"
+            android:layout_below="@+id/content"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="2dip"
+            android:padding="1dip"/>
+</LinearLayout>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:background="@color/main_bg"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <RelativeLayout
+            android:id="@+id/nav_bar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp150"
+            >
+
+        <ImageView
+                android:id="@+id/iv_back"
+                android:layout_width="@dimen/dp120"
+                android:layout_height="@dimen/dp120"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/dp40"
+                android:background="@drawable/bg_circle"
+                android:src="@drawable/btn_icon_back" />
+
+        <ImageView android:layout_width="wrap_content"
+                   android:src="@drawable/icon_more"
+                   android:id="@+id/btn_favour"
+                   android:onClick="onTopMenuPopupButtonClick"
+                   android:padding="6dp"
+                   android:layout_centerVertical="true"
+                   android:layout_alignParentRight="true"
+                   android:layout_height="wrap_content"/>
+
+        <ImageView android:layout_width="wrap_content"
+                   android:id="@+id/btn_share"
+                   android:padding="6dp"
+                   android:layout_centerVertical="true"
+                   android:layout_toLeftOf="@+id/btn_favour"
+                   android:src="@drawable/icon_car"
+                   android:textColor="@color/white"
+                   android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+
+    <WebView android:layout_width="match_parent"
+             android:layout_weight="1"
+             android:id="@+id/webview"
+             android:layout_below="@+id/nav_bar"
+             android:layout_height="wrap_content">
+
+    </WebView>
+    <LinearLayout android:layout_width="match_parent"
+                  android:orientation="vertical"
+                  android:layout_alignParentBottom="true"
+                  android:layout_height="wrap_content">
+
+        <View android:layout_width="match_parent"
+              android:background="@color/gray"
+              android:layout_alignTop="@+id/bottom_view"
+              android:layout_height="0.1dp"></View>
+
+        <LinearLayout android:layout_width="match_parent"
+                      android:padding="3dp"
+                      android:background="@color/mm_main_bg_mine"
+                      android:id="@+id/bottom_view"
+                      android:layout_alignParentBottom="true"
+                      android:layout_height="wrap_content">
+            <LinearLayout android:layout_width="0dp"
+                          android:layout_weight="1"
+                          android:id="@+id/liner_lxmj"
+                          android:layout_gravity="center"
+                          android:gravity="center"
+                          android:orientation="vertical"
+                          android:layout_height="wrap_content">
+                <ImageView android:layout_width="wrap_content"
+                           android:src="@drawable/md_home_msg"
+                           android:layout_height="wrap_content"/>
+                <TextView android:layout_width="wrap_content"
+                          android:text="联系卖家"
+                          android:textSize="12sp"
+                          android:id="@+id/bottom_btn_one"
+                          android:textColor="@color/white"
+                          android:layout_centerVertical="true"
+                          android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <LinearLayout android:layout_width="0dp"
+                          android:layout_weight="1"
+                          android:layout_gravity="center"
+                          android:id="@+id/liner_tdcy"
+                          android:gravity="center"
+                          android:orientation="vertical"
+                          android:layout_height="wrap_content">
+                <ImageView android:layout_width="wrap_content"
+                           android:src="@drawable/md_grass"
+                           android:layout_gravity="center"
+                           android:layout_height="wrap_content"/>
+                <TextView android:layout_width="wrap_content"
+                          android:text="他的草原"
+                          android:layout_gravity="center"
+                          android:gravity="center"
+                          android:textSize="12sp"
+                          android:id="@+id/bottom_btn_two"
+                          android:textColor="@color/white"
+                          android:layout_centerVertical="true"
+                          android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <TextView android:layout_width="0dp"
+                      android:layout_weight="1.5"
+                      android:text="加入购物车"
+                      android:layout_gravity="center"
+                      android:gravity="center"
+                      android:padding="12dp"
+                      android:background="@drawable/btn_yellow_radio_shape"
+                      android:id="@+id/bottom_btn_three"
+                      android:textColor="@color/white"
+                      android:layout_centerVertical="true"
+                      android:layout_height="wrap_content"/>
+            <TextView android:layout_width="0dp"
+                      android:layout_weight="1.5"
+                      android:text="购买"
+                      android:layout_gravity="center"
+                      android:gravity="center"
+                      android:padding="12dp"
+                      android:layout_marginLeft="8dp"
+                      android:background="@drawable/btn_red_radio_shape"
+                      android:id="@+id/bottom_btn_four"
+                      android:textColor="@color/white"
+                      android:layout_centerVertical="true"
+                      android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

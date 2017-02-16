@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:clickable="true"
+              android:padding="8dp"
+              android:id="@+id/pop_layout"
+              android:background="@drawable/btn_white_blue_shape"
+              android:orientation="vertical">
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="8dp"
+                android:layout_marginBottom="10dp"
+                android:text="打开相机"
+                android:id="@+id/camera"
+                android:textColor="@color/green"
+                android:textSize="20sp"/>
+
+            <View android:layout_width="match_parent"
+                  android:layout_height="0.5dp"
+                  android:layout_marginLeft="20dp"
+                  android:layout_marginRight="20dp"
+                  android:background="@color/blue"/>
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="选择相册"
+                    android:id="@+id/mapstorage"
+                    android:textColor="@color/green"
+                    android:textSize="20sp"/>
+
+            <View android:layout_width="match_parent"
+                  android:layout_height="0.1dp"
+                  android:layout_marginLeft="20dp"
+                  android:layout_marginRight="20dp"
+                  android:layout_marginBottom="10dp"
+                  android:background="@color/red_p"/>
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:layout_marginBottom="15dp"
+                    android:text="取消"
+                    android:id="@+id/cancel"
+                    android:textColor="@color/red"
+                    android:textSize="20sp"/>
+</LinearLayout>

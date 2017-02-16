@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+    <RelativeLayout android:layout_width="match_parent"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:background="@color/green"
+                    android:layout_height="@dimen/top_title_height">
+        <!--<TextView android:layout_width="wrap_content"-->
+                  <!--android:maxWidth="80dp"-->
+                  <!--android:drawablePadding="5dp"-->
+                  <!--android:textSize="13sp"-->
+                  <!--android:gravity="center_vertical"-->
+                  <!--android:padding="6dp"-->
+                  <!--android:singleLine="true"-->
+                  <!--android:id="@+id/location"-->
+                  <!--android:drawableLeft="@drawable/home_menu_near"-->
+                  <!--android:text="郑州"-->
+                  <!--android:textColor="@color/white"-->
+                  <!--android:layout_centerVertical="true"-->
+                  <!--android:layout_height="40dp"/>-->
+
+            <ImageView android:layout_width="30dp"
+                       android:background="@drawable/md_home_qr"
+                       android:padding="12dp"
+                       android:layout_marginLeft="8dp"
+                       android:layout_marginRight="8dp"
+                       android:id="@+id/btn_scan"
+                       android:onClick="scanAction"
+                       android:layout_centerVertical="true"
+                       android:layout_height="30dp"/>
+
+        <EditText android:layout_width="match_parent"
+                  android:layout_marginTop="8dp"
+                  android:layout_toRightOf="@+id/btn_scan"
+                  android:layout_toLeftOf="@+id/btn_add"
+                  android:singleLine="true"
+                  android:id="@+id/keywords"
+                  android:hint="输入你正在找的"
+                  android:drawablePadding="15dp"
+                  android:paddingLeft="8dp"
+                  android:background="@drawable/et_white_bg"
+                  android:textSize="15sp"
+                  android:layout_centerHorizontal="true"
+                  android:layout_centerVertical="true"
+                  android:drawableLeft="@drawable/sm_search"
+                  android:paddingRight="12dp"
+                  android:textColor="@color/text_color_two"
+                  android:layout_height="match_parent"/>
+
+        <ImageView android:layout_width="wrap_content"
+                   android:layout_marginRight="8dp"
+                   android:layout_marginLeft="8dp"
+                   android:onClick="onTopMenuPopupButtonClick"
+                   android:layout_centerVertical="true"
+                   android:id="@+id/btn_add"
+                   android:layout_alignParentRight="true"
+                   android:src="@drawable/cart_mine"
+                   android:layout_height="wrap_content"/>
+        <!--<ImageView android:layout_width="25dp"-->
+                   <!--android:id="@+id/msg"-->
+                   <!--android:layout_marginLeft="6dp"-->
+                   <!--android:layout_centerVertical="true"-->
+                   <!--android:layout_toLeftOf="@+id/btn_add"-->
+                   <!--android:src="@drawable/md_home_msg_new"-->
+                   <!--android:layout_height="wrap_content"/>-->
+    </RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:background="@color/white"
+                android:layout_height="match_parent">
+    <include
+            android:layout_width="match_parent"
+            android:layout_alignParentTop="true"
+            android:id="@+id/top_liner"
+            android:layout_height="wrap_content"
+            layout="@layout/top_liner"/>
+    <FrameLayout
+            android:id="@+id/content_frame"
+            android:layout_below="@+id/top_liner"
+            android:layout_width="match_parent"
+            android:background="@color/white"
+            android:layout_height="match_parent">
+    </FrameLayout>
+</RelativeLayout>

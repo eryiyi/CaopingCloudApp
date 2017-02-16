@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:background="@color/white"
+              android:layout_height="match_parent">
+    <include
+            android:layout_width="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_height="wrap_content"
+            layout="@layout/top_liner"/>
+
+    <com.caoping.cloud.widget.ReboundScrollView
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="wrap_content">
+
+        <LinearLayout android:layout_width="match_parent"
+                      android:orientation="vertical"
+                      android:padding="12dp"
+                      android:layout_height="wrap_content">
+            <LinearLayout android:layout_width="match_parent"
+                          android:orientation="horizontal"
+                          android:layout_height="wrap_content">
+                <TextView android:layout_width="wrap_content"
+                          android:text="收货人："
+                          android:textSize="16sp"
+                          android:gravity="center_vertical"
+                          android:id="@+id/text_one"
+                          android:textColor="@color/text_color"
+                          android:layout_height="40dp"/>
+                <EditText android:layout_width="match_parent"
+                          android:layout_toRightOf="@+id/text_one"
+                          android:hint="请输入收货人姓名"
+                          android:padding="5dp"
+                          android:id="@+id/add_nickname"
+                          android:background="@null"
+                          android:layout_height="40dp"/>
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="match_parent"
+                          android:orientation="horizontal"
+                          android:layout_marginTop="5dp"
+                          android:layout_height="wrap_content">
+                <TextView android:layout_width="wrap_content"
+                          android:text="手机号码："
+                          android:textSize="16sp"
+                          android:gravity="center_vertical"
+                          android:id="@+id/text_two"
+                          android:textColor="@color/text_color"
+                          android:layout_height="40dp"/>
+                <EditText android:layout_width="match_parent"
+                          android:hint="收货人手机号码"
+                          android:padding="5dp"
+                          android:numeric="integer"
+                          android:id="@+id/add_tel"
+                          android:background="@null"
+                          android:layout_height="40dp"/>
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_below="@+id/view_line_two"
+                          android:orientation="horizontal"
+                          android:id="@+id/liner_location"
+                          android:layout_marginTop="5dp"
+                          android:layout_height="wrap_content">
+                <com.caoping.cloud.widget.CustomerSpinner
+                        android:background="@drawable/login_edit_bg"
+                        android:drawableLeft="@drawable/star"
+                        style="@style/button_text"
+                        android:layout_alignParentRight="true"
+                        android:id="@+id/mm_emp_provinceId"
+                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_height="40dp">
+                </com.caoping.cloud.widget.CustomerSpinner>
+
+                <com.caoping.cloud.widget.CustomerSpinner
+                        android:background="@drawable/login_edit_bg"
+                        android:drawableLeft="@drawable/star"
+                        android:layout_alignParentRight="true"
+                        android:id="@+id/mm_emp_cityId"
+                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_height="40dp">
+
+                </com.caoping.cloud.widget.CustomerSpinner>
+                <com.caoping.cloud.widget.CustomerSpinner
+                        android:background="@drawable/login_edit_bg"
+                        android:drawableLeft="@drawable/star"
+                        android:layout_alignParentRight="true"
+                        android:id="@+id/mm_emp_countryId"
+                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_height="40dp">
+                </com.caoping.cloud.widget.CustomerSpinner>
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="match_parent"
+                          android:orientation="horizontal"
+                          android:layout_marginTop="5dp"
+                          android:layout_height="wrap_content">
+                <TextView android:layout_width="wrap_content"
+                          android:text="地址："
+                          android:textSize="16sp"
+                          android:gravity="center_vertical"
+                          android:id="@+id/text_four"
+                          android:textColor="@color/text_color"
+                          android:layout_height="40dp"/>
+                <EditText android:layout_width="match_parent"
+                          android:hint="详细地址"
+                          android:padding="5dp"
+                          android:layout_below="@+id/view_line_three"
+                          android:id="@+id/add_address_two"
+                          android:background="@null"
+                          android:layout_height="40dp"/>
+            </LinearLayout>
+            <LinearLayout android:layout_width="match_parent"
+                          android:orientation="horizontal"
+                          android:gravity="center_vertical"
+                          android:layout_height="wrap_content">
+                <TextView android:layout_width="wrap_content"
+                          android:text="*设置为默认收货地址"
+                          android:textColor="@color/text_color"
+                          android:textSize="16sp"
+                          android:layout_weight="1"
+                          android:layout_height="wrap_content"/>
+
+                <CheckBox android:layout_width="wrap_content"
+                          android:id="@+id/checkbox"
+                          android:layout_gravity="center_vertical"
+                          android:gravity="center_vertical"
+                          android:layout_height="wrap_content"/>
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </com.caoping.cloud.widget.ReboundScrollView>
+
+    <Button android:layout_width="match_parent"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="5dp"
+            android:text="保存"
+            android:id="@+id/button_add_address"
+            android:textColor="@color/white"
+            android:background="@drawable/btn_red_shape"
+            android:layout_height="40dp"/>
+</LinearLayout>

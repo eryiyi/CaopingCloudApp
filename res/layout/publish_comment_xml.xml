@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:id="@+id/main"
+              android:background="@drawable/white"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <!-- head开始 -->
+    <include
+            android:layout_width="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_height="wrap_content"
+            layout="@layout/top_liner"/>
+    <!-- head结束 -->
+
+    <EditText
+            android:id="@+id/face_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="80dp"
+            android:paddingTop="10dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingBottom="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            android:background="@null"
+            android:textSize="16sp"
+            android:gravity="top"
+            android:hint="说点儿什么吧......"
+            android:padding="10dp"
+            android:textColor="#ff000000"/>
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content">
+        <RatingBar android:layout_width="wrap_content"
+                   android:isIndicator="false"
+                   android:numStars="5"
+                   android:id="@+id/startNumber"
+                   android:rating="0"
+                   android:stepSize="1"
+                   android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+
+    <com.caoping.cloud.widget.NoScrollGridView
+            android:id="@+id/publish_moopd_gridview_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:listSelector="@drawable/btn_white_shape"
+            android:horizontalSpacing="5dip"
+            android:numColumns="4"
+            android:padding="10dip"
+            android:verticalSpacing="5dip"/>
+    <View android:layout_width="match_parent"
+          android:layout_height="0.5dp"
+          android:background="#d1d1d1"/>
+
+</LinearLayout>

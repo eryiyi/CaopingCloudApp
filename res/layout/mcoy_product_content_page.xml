@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="#f9f9f9"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+    <View android:layout_width="match_parent"
+          android:background="@color/gray"
+          android:layout_height="0.1dp"></View>
+    <LinearLayout android:layout_width="match_parent"
+                  android:orientation="horizontal"
+                  android:layout_marginTop="55dp"
+                  android:layout_height="wrap_content">
+        <LinearLayout android:layout_width="0dp"
+                      android:padding="12dp"
+                      android:id="@+id/profile_liner_one"
+                      android:gravity="center"
+                      android:orientation="vertical"
+                      android:layout_weight="1"
+                      android:layout_gravity="center"
+                      android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content"
+                      android:text="图文详情"
+                      android:id="@+id/btn_twxq"
+                      android:textSize="16sp"
+                      android:textColor="@color/text_color"
+                      android:gravity="center"
+                      android:layout_height="wrap_content"/>
+            <ImageView android:layout_width="match_parent"
+                       android:background="@color/btn_yellow_normal"
+                       android:id="@+id/profile_btn_count_one_liner"
+                       android:layout_marginTop="8dp"
+                       android:layout_height="0.1dp"/>
+        </LinearLayout>
+        <LinearLayout android:layout_width="0dp"
+                      android:padding="12dp"
+                      android:orientation="vertical"
+                      android:layout_weight="1"
+                      android:id="@+id/profile_liner_two"
+                      android:gravity="center"
+                      android:layout_gravity="center"
+                      android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content"
+                      android:text="产品参数"
+                      android:id="@+id/btn_cpcs"
+                      android:textSize="16sp"
+                      android:textColor="@color/text_color"
+                      android:gravity="center"
+                      android:layout_height="wrap_content"/>
+            <ImageView android:layout_width="match_parent"
+                       android:layout_marginTop="8dp"
+                       android:visibility="gone"
+                       android:id="@+id/profile_btn_count_two_liner"
+                       android:background="@color/btn_yellow_normal"
+                       android:layout_height="0.1dp"/>
+        </LinearLayout>
+        <LinearLayout android:layout_width="0dp"
+                      android:padding="12dp"
+                      android:id="@+id/profile_liner_three"
+                      android:orientation="vertical"
+                      android:layout_weight="1"
+                      android:gravity="center"
+                      android:layout_gravity="center"
+                      android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content"
+                      android:text="公司简介"
+                      android:id="@+id/btn_gsjj"
+                      android:textSize="16sp"
+                      android:textColor="@color/text_color"
+                      android:gravity="center"
+                      android:layout_height="wrap_content"/>
+            <ImageView android:layout_width="match_parent"
+                       android:visibility="gone"
+                       android:layout_marginTop="8dp"
+                       android:id="@+id/profile_btn_count_three_liner"
+                       android:background="@color/btn_yellow_normal"
+                       android:layout_height="0.1dp"/>
+        </LinearLayout>
+    </LinearLayout>
+    <View android:layout_width="match_parent"
+          android:background="@color/gray"
+          android:layout_height="0.1dp"></View>
+
+
+    <android.support.v4.view.ViewPager
+            android:id="@+id/vPager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1.0"
+            android:background="#000000"
+            android:flipInterval="30"
+            android:persistentDrawingCache="animation"/>
+
+</LinearLayout>

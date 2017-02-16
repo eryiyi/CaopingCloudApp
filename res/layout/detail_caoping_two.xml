@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:background="@color/white"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <com.caoping.cloud.widget.ReboundScrollView android:layout_width="match_parent"
+                                              android:layout_height="match_parent">
+        <LinearLayout android:layout_width="match_parent"
+                      android:orientation="vertical"
+                      android:padding="8dp"
+                      android:layout_height="match_parent">
+           <TextView android:layout_width="match_parent"
+                     android:lineSpacingMultiplier="1.4"
+                     android:textColor="@color/text_color"
+                     android:textSize="16sp"
+                     android:padding="8dp"
+                     android:text="草坪属性：暖机草坪\n草坪用途：园林绿化 观赏草坪\n草坪规格：30*60\n一份数量：10M\n种植面积：5000亩"
+                     android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+    </com.caoping.cloud.widget.ReboundScrollView>
+
+</LinearLayout>

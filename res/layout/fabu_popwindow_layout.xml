@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/fabu_popup_dongtai"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/fabu_popup_zijin"
+        android:layout_marginBottom="60dp"
+        android:layout_toLeftOf="@+id/fabu_popup_zijin"
+        android:clickable="true"
+        android:drawablePadding="6dp"
+        android:drawableTop="@drawable/fabuqiuzhi"
+        android:gravity="center_horizontal"
+        android:text="草坪" />
+
+    <TextView
+        android:id="@+id/fabu_popup_zijin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/fabu_popup_rencai"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="6dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:clickable="true"
+        android:drawablePadding="6dp"
+        android:drawableTop="@drawable/fabushebei"
+        android:gravity="center_horizontal"
+        android:text="种子" />
+
+    <TextView
+        android:id="@+id/fabu_popup_shebei"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/fabu_popup_zijin"
+        android:layout_marginBottom="60dp"
+        android:layout_toRightOf="@+id/fabu_popup_zijin"
+        android:clickable="true"
+        android:drawablePadding="6dp"
+        android:drawableTop="@drawable/fabujuben"
+        android:gravity="center_horizontal"
+        android:text="机械" />
+
+    <TextView
+        android:id="@+id/fabu_popup_juben"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/fabu_popup_rencai"
+        android:layout_marginBottom="6dp"
+        android:layout_toLeftOf="@+id/fabu_popup_rencai"
+        android:clickable="true"
+        android:drawablePadding="6dp"
+        android:drawableTop="@drawable/fabudongtai"
+        android:gravity="center_horizontal"
+        android:text="头条" />
+
+    <TextView
+        android:id="@+id/fabu_popup_rencai"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="60dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:clickable="true"
+        android:drawablePadding="6dp"
+        android:drawableTop="@drawable/fabuzhaoshebei"
+        android:gravity="center_horizontal"
+        android:text="车主" />
+
+    <TextView
+        android:id="@+id/fabu_popup_changdi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/fabu_popup_rencai"
+        android:layout_marginBottom="6dp"
+        android:layout_toRightOf="@+id/fabu_popup_rencai"
+        android:clickable="true"
+        android:drawablePadding="6dp"
+        android:drawableTop="@drawable/fabuzhaochangdi"
+        android:gravity="center_horizontal"
+        android:text="货主" />
+
+    <ImageView
+        android:id="@+id/fabu_popup_close_img"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/fabuquxiao" />
+
+</RelativeLayout>
