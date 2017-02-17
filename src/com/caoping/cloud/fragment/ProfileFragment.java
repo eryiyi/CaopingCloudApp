@@ -110,8 +110,8 @@ public class ProfileFragment extends BaseFragment  implements View.OnClickListen
     }
 
     private void initView() {
-        view.findViewById(R.id.btn_caigou).setOnClickListener(this);
-        view.findViewById(R.id.btn_gongying).setOnClickListener(this);
+//        view.findViewById(R.id.btn_caigou).setOnClickListener(this);
+//        view.findViewById(R.id.btn_gongying).setOnClickListener(this);
         cover = (ImageView) view.findViewById(R.id.cover);
         cover.setOnClickListener(this);
         relate_name_one = (RelativeLayout) view.findViewById(R.id.relate_name_one);
@@ -176,7 +176,7 @@ public class ProfileFragment extends BaseFragment  implements View.OnClickListen
             }
                 break;
             case R.id.profile_txt_four:
-            case R.id.btn_caigou:
+//            case R.id.btn_caigou:
             {
                 //采购
                 Intent intent = new Intent(getActivity(), MineOrdersActivity.class);
@@ -184,7 +184,7 @@ public class ProfileFragment extends BaseFragment  implements View.OnClickListen
             }
                 break;
             case R.id.profile_txt_three:
-            case R.id.btn_gongying:
+//            case R.id.btn_gongying:
             {
                 //销售
                 Intent intent = new Intent(getActivity(), MineOrdersManagerActivity.class);
@@ -255,7 +255,11 @@ public class ProfileFragment extends BaseFragment  implements View.OnClickListen
             break;
             case R.id.btn_caoyuan:
             {
-                getGys();
+                //发布记录
+//
+                Intent intent = new Intent(getActivity(), ListMineProductActivity.class);
+                intent.putExtra("is_type", "0");
+                startActivity(intent);
             }
             break;
             case R.id.btn_comment:
@@ -289,14 +293,13 @@ public class ProfileFragment extends BaseFragment  implements View.OnClickListen
             break;
             case R.id.profile_txt_two:
             {
-                Intent intent = new Intent(getActivity(), ListMineProductActivity.class);
-                startActivity(intent);
+                getGys();
             }
                 break;
 
             case R.id.profile_txt_five:
             {
-                Intent intent = new Intent(getActivity(), ListMingqiActivity.class);
+                Intent intent = new Intent(getActivity(), MineFensiActivity.class);
                 startActivity(intent);
             }
             break;
@@ -711,10 +714,10 @@ public class ProfileFragment extends BaseFragment  implements View.OnClickListen
                                 if(payAmountObj != null){
                                     profile_content.setText("亲爱的"+getGson().fromJson(getSp().getString("empName", ""), String.class)
                                             +"先生，您加入草坪云已"+(payAmountObj.getRuzhuNumber()==null?"1":payAmountObj.getRuzhuNumber())+"天，消费"+(payAmountObj.getZhichuAmount()==null?"0":payAmountObj.getZhichuAmount())+"元，收入"+(payAmountObj.getShouruAmount()==null?"0":payAmountObj.getShouruAmount())+"元。");
-                                    profile_txt_two.setText("我发布的"+(payAmountObj.getCpNumber()==null?"0":payAmountObj.getCpNumber()));
-                                    profile_txt_three.setText("我卖出的"+(payAmountObj.getGoodsCountTwo()==null?"0":payAmountObj.getGoodsCountTwo()));
-                                    profile_txt_four.setText("我买到的"+(payAmountObj.getGoodsCountOne()==null?"0":payAmountObj.getGoodsCountOne()));
-                                    profile_txt_five.setText("知名度"+(payAmountObj.getZhimingdu()==null?"0":payAmountObj.getZhimingdu()));
+                                    profile_txt_two.setText("我的草原"+(payAmountObj.getCpNumber()==null?"0":payAmountObj.getCpNumber()));
+                                    profile_txt_three.setText("销售订单"+(payAmountObj.getGoodsCountTwo()==null?"0":payAmountObj.getGoodsCountTwo()));
+                                    profile_txt_four.setText("采购订单"+(payAmountObj.getGoodsCountOne()==null?"0":payAmountObj.getGoodsCountOne()));
+                                    profile_txt_five.setText("粉丝"+(payAmountObj.getFensiNumber()==null?"0":payAmountObj.getFensiNumber()));
                                 }
                             }
                         }

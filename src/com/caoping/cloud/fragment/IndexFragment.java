@@ -194,7 +194,10 @@ public class IndexFragment extends BaseFragment implements View.OnClickListener,
             case R.id.btn_two:
             {
                 //订单数据
-                Intent intent = new Intent(getActivity(), StatisticalActivity.class);
+//                Intent intent = new Intent(getActivity(), StatisticalActivity.class);
+//                startActivity(intent);
+                Intent intent = new Intent(getActivity(), ListCaoyuanActivity.class);
+                intent.putExtra("tmpNearby", "0");
                 startActivity(intent);
             }
             break;
@@ -583,7 +586,7 @@ public class IndexFragment extends BaseFragment implements View.OnClickListener,
                 params.put("is_del", "0");
 //                switch (Integer.parseInt(typeId)){
 //                    case 0:
-//                        params.put("mm_msg_type", "1");
+                        params.put("mm_msg_type", "1");
 //                        break;
 //                    case 1:
 //                        break;

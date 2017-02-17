@@ -10,14 +10,14 @@ public class PayAmountObj {
     private String cpNumber;//发布数量
     private String goodsCountOne;//买的商品数量
     private String goodsCountTwo;//卖的商品数量
-    private String zhimingdu;//知名度
+    private String fensiNumber;//粉丝数量
 
-    public String getZhimingdu() {
-        return zhimingdu;
+    public String getFensiNumber() {
+        return fensiNumber;
     }
 
-    public void setZhimingdu(String zhimingdu) {
-        this.zhimingdu = zhimingdu;
+    public void setFensiNumber(String fensiNumber) {
+        this.fensiNumber = fensiNumber;
     }
 
     public String getCpNumber() {
