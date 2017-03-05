@@ -17,7 +17,6 @@
               android:textSize="16sp"
               android:layout_marginLeft="6dp"
               android:layout_toRightOf="@+id/cover"
-              android:text="武汉郊区，国庆长假结束后"
               android:layout_height="wrap_content"/>
     <TextView android:layout_width="wrap_content"
               android:textColor="@color/red_p"
@@ -26,7 +25,6 @@
               android:singleLine="true"
               android:layout_marginLeft="6dp"
               android:layout_toRightOf="@+id/cover"
-              android:text="$10000"
               android:layout_below="@+id/title"
               android:layout_height="wrap_content"/>
     <TextView android:layout_width="wrap_content"
@@ -35,7 +33,6 @@
               android:layout_marginTop="6dp"
               android:layout_alignParentRight="true"
               android:singleLine="true"
-              android:text="销量：10000"
               android:layout_below="@+id/title"
               android:layout_height="wrap_content"/>
     <TextView android:layout_width="wrap_content"
@@ -43,10 +40,9 @@
               android:id="@+id/company"
               android:layout_below="@+id/money"
               android:layout_marginTop="6dp"
-              android:textSize="16sp"
+              android:textSize="14sp"
               android:layout_marginLeft="6dp"
               android:layout_toRightOf="@+id/cover"
-              android:text="沭阳盛博农业开发有限公司"
               android:layout_height="wrap_content"/>
     <LinearLayout android:layout_width="wrap_content"
                   android:orientation="horizontal"
@@ -78,7 +74,6 @@
     </LinearLayout>
 
     <TextView android:layout_width="wrap_content"
-              android:text="江苏·宿迁宿迁宿迁宿迁宿迁宿迁宿迁宿迁"
               android:layout_marginLeft="128dp"
               android:singleLine="true"
               android:id="@+id/btn_address"

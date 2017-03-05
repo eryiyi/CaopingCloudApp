@@ -187,10 +187,13 @@ public class OrderMakeActivity extends BaseActivity implements View.OnClickListe
             Double doublePrices = 0.0;
             for(int i=0; i<lists.size() ;i++){
                 ShoppingCart shoppingCart = lists.get(i);
-                if(shoppingCart.getIs_select() .equals("0")){
-                    //默认是选中的
-                    doublePrices = doublePrices + Double.parseDouble(shoppingCart.getSell_price()) * Double.parseDouble(shoppingCart.getGoods_count());
+                if(shoppingCart != null){
+                    if(shoppingCart.getIs_select() .equals("0")){
+                        //默认是选中的
+                        doublePrices = doublePrices + Double.parseDouble(shoppingCart.getSell_price()) * Double.parseDouble(shoppingCart.getGoods_count());
+                    }
                 }
+
             }
             order_count.setText(getResources().getString(R.string.countPrices) + df.format(doublePrices).toString());
         }

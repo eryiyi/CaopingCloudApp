@@ -18,14 +18,12 @@
               android:id="@+id/title"
               android:layout_height="wrap_content"/>
     <TextView android:layout_width="wrap_content"
-              android:text="江苏· 沭阳"
               android:id="@+id/name"
               android:layout_below="@+id/title"
-              android:textColor="@color/text_color"
+              android:textColor="@color/text_color_two"
               android:textSize="15sp"
               android:layout_height="wrap_content"/>
     <TextView android:layout_width="wrap_content"
-              android:text="盛博农业开发有限公司"
               android:id="@+id/company"
               android:layout_marginTop="3dp"
               android:layout_below="@+id/name"
@@ -34,7 +32,6 @@
               android:textSize="14sp"
               android:layout_height="wrap_content"/>
     <TextView android:layout_width="wrap_content"
-              android:text="销售 1004"
               android:id="@+id/count"
               android:layout_marginTop="3dp"
               android:layout_below="@+id/company"

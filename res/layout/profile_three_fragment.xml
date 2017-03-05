@@ -21,27 +21,24 @@
                       android:id="@+id/company_detail"
                       android:textColor="@color/text_color"
                       android:lineSpacingMultiplier="1.4"
-                      android:text="沭阳县扎下镇沭阳国际花木城成功大道46号
-水产养殖、家禽、销售（该项目需报相关监督管理部门备案）；蔬菜、水果、花卉、苗木草坪、盆景种植、销售；园林绿化工程设计、施工、养护；
-不再分装的包装种子销售；柳编。藤制品、竹制品、手工艺品、园林小品制作、销售。（依法须经批准的项目，经相关部门批准后方可开展经营活动）"
                       android:layout_height="wrap_content"/>
 
             <TextView android:layout_width="wrap_content"
-                      android:text="联系人：胡琪"
+
                       android:id="@+id/company_person"
                       android:padding="8dp"
                       android:textSize="16sp"
                       android:textColor="@color/text_color"
                       android:layout_height="wrap_content"/>
             <TextView android:layout_width="wrap_content"
-                      android:text="电话：05435552"
+
                       android:padding="8dp"
                       android:id="@+id/company_tel"
                       android:textSize="16sp"
                       android:textColor="@color/text_color"
                       android:layout_height="wrap_content"/>
             <TextView android:layout_width="wrap_content"
-                      android:text="公司地址：江苏省沭阳县扎下花木城"
+
                       android:padding="8dp"
                       android:id="@+id/company_address"
                       android:textSize="16sp"

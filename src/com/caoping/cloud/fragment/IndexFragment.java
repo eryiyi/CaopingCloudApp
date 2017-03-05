@@ -109,7 +109,23 @@ public class IndexFragment extends BaseFragment implements View.OnClickListener,
 
     private void initView() {
         keywords = (EditText) view.findViewById(R.id.keywords);
-        keywords.addTextChangedListener(watcher);
+        keywords.setOnFocusChangeListener(new android.view.View.
+                OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    if(!StringUtil.isNullOrEmpty(keywords.getText().toString())){
+                        Intent intent = new Intent(getActivity(), SearchActivity.class);
+                        intent.putExtra("keywords", keywords.getText().toString());
+                        startActivity(intent);
+                    }
+                    keywords.clearFocus();//失去焦点
+                } else {
+                    // 此处为失去焦点时的处理内容
+                }
+            }
+        });
+
         txt_news_one = (TextView) view.findViewById(R.id.txt_news_one);
         txt_news_two = (TextView) view.findViewById(R.id.txt_news_two);
         view.findViewById(R.id.btn_one).setOnClickListener(this);
@@ -151,27 +167,6 @@ public class IndexFragment extends BaseFragment implements View.OnClickListener,
 //        }
 //    }
 
-
-    private TextWatcher watcher = new TextWatcher() {
-
-        @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-        }
-
-        @Override
-        public void beforeTextChanged(CharSequence s, int start, int count,
-                                      int after) {
-        }
-
-        @Override
-        public void afterTextChanged(Editable s) {
-            if(!StringUtil.isNullOrEmpty(keywords.getText().toString())){
-                Intent intent = new Intent(getActivity(), SearchActivity.class);
-                intent.putExtra("keywords", keywords.getText().toString());
-                startActivity(intent);
-            }
-        }
-    };
 
     @Override
     public void onClick(View v) {

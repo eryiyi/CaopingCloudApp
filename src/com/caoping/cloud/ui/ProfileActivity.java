@@ -274,6 +274,9 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
                                         company.setText(companyObj.getEmp_name()+" "+(companyObj.getCompany_name()==null?"":companyObj.getCompany_name()));
                                         imageLoader.displayImage(companyObj.getCompany_pic(), company_pic, CaopingCloudApplication.options, animateFirstListener);
                                         imageLoader.displayImage(companyObj.getEmp_cover(), cover, CaopingCloudApplication.txOptions, animateFirstListener);
+                                    }else {
+                                        showMsg(ProfileActivity.this, "该用户尚未开通草原！");
+                                        finish();
                                     }
                                 }else{
                                     showMsg(ProfileActivity.this, jo.getString("message"));

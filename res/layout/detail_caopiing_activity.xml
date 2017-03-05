@@ -103,7 +103,7 @@
                   android:layout_gravity="center"
                   android:gravity="center"
                   android:padding="12dp"
-                  android:background="@drawable/btn_yellow_radio_shape"
+                  android:background="@drawable/btn_green_radio_shape"
                   android:id="@+id/bottom_btn_three"
                   android:textColor="@color/white"
                   android:layout_centerVertical="true"

@@ -13,9 +13,11 @@ import com.caoping.cloud.adapter.OnClickContentItemListener;
 import com.caoping.cloud.base.BaseActivity;
 import com.caoping.cloud.db.DBHelper;
 import com.caoping.cloud.entiy.ShoppingCart;
+import com.caoping.cloud.util.StringUtil;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -32,6 +34,9 @@ public class MineCartActivity extends BaseActivity implements View.OnClickListen
     private TextView title;//标题
     private boolean flag = false;
     private ImageView search_null;
+    //定义一个HashMap，用来存放EditText的值，Key是position
+    public  static  HashMap<Integer, String> hashMap = new HashMap<Integer, String>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -191,6 +196,17 @@ public class MineCartActivity extends BaseActivity implements View.OnClickListen
                 lists.clear();
                 adapter.notifyDataSetChanged();
             }
+//            if(action.equals("goods_number_change")){
+//                if(lists != null){
+//                    for(int i=0;i<hashMap.size();i++){
+//                        if(!StringUtil.isNullOrEmpty(hashMap.get(i))){
+//                            lists.get(i).setGoods_count(hashMap.get(i));
+//                        }
+//                    }
+//                }
+//                adapter.notifyDataSetChanged();
+//                toCalculate();
+//            }
         }
 
     };
@@ -199,6 +215,7 @@ public class MineCartActivity extends BaseActivity implements View.OnClickListen
     public void registerBoradcastReceiver() {
         IntentFilter myIntentFilter = new IntentFilter();
         myIntentFilter.addAction("cart_clear");//设置刷新
+//        myIntentFilter.addAction("goods_number_change");//设置刷新
         //注册广播
         registerReceiver(mBroadcastReceiver, myIntentFilter);
     }
@@ -213,5 +230,11 @@ public class MineCartActivity extends BaseActivity implements View.OnClickListen
         flag = true;
         adapter.notifyDataSetChanged();
     }
+
+//    public static void MethodCal(int position , String number){
+//        lists.get(position).setGoods_count(number);
+//        adapter.notifyDataSetChanged();
+//        toCalculate();
+//    }
 
 }

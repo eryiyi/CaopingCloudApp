@@ -262,7 +262,6 @@ public class InternetURL {
     //商品详情页
     public static final String TO_DETAIL_GOODS = INTERNAL + "toDetailCp.do";
 
-
     //获得商品详情页好评度和消费评价总数
     public static final String GET_COMMENT_ALL_URN = INTERNAL + "appGetCountComment.do";
     //获得店铺详情页好评度和消费评价总数

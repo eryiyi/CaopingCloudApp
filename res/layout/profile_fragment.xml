@@ -113,14 +113,13 @@
                           android:layout_height="wrap_content"/>
                 <TextView android:layout_width="match_parent"
                           android:layout_below="@+id/liner_status"
-                          android:textSize="15sp"
+                          android:textSize="14sp"
                           android:padding="8dp"
                           android:id="@+id/profile_content"
                           android:textColor="@color/white"
                           android:layout_marginLeft="15dp"
                           android:layout_marginRight="15dp"
                           android:layout_marginTop="8dp"
-                          android:text="亲爱的%s先生，您加入草坪云已%s天，\n消费%s元，收入%s元。"
                           android:layout_height="wrap_content"/>
             </RelativeLayout>
             <!--<LinearLayout android:layout_width="match_parent"-->
@@ -214,9 +213,9 @@
                           android:drawableTop="@drawable/profile_18"
                           android:drawablePadding="8dp"
                           android:padding="8dp"
+                          android:background="@drawable/zhuye_item_select"
                           android:textColor="@color/text_color"
-                          android:text="我的草原%s"
-                          android:textSize="14sp"
+                          android:text="我的草原"
                           android:layout_gravity="center"
                           android:gravity="center"
                           android:id="@+id/profile_txt_two"
@@ -228,8 +227,8 @@
                           android:padding="8dp"
                           android:id="@+id/profile_txt_three"
                           android:textColor="@color/text_color"
-                          android:text="销售订单%s"
-                          android:textSize="14sp"
+                          android:text="销售订单"
+                          android:background="@drawable/zhuye_item_select"
                           android:layout_gravity="center"
                           android:gravity="center"
                           android:layout_height="wrap_content"/>
@@ -240,8 +239,8 @@
                           android:padding="8dp"
                           android:id="@+id/profile_txt_four"
                           android:textColor="@color/text_color"
-                          android:text="采购订单%s"
-                          android:textSize="14sp"
+                          android:text="采购订单"
+                          android:background="@drawable/zhuye_item_select"
                           android:layout_gravity="center"
                           android:gravity="center"
                           android:layout_height="wrap_content"/>
@@ -252,8 +251,8 @@
                           android:padding="8dp"
                           android:id="@+id/profile_txt_five"
                           android:textColor="@color/text_color"
-                          android:text="粉丝%s"
-                          android:textSize="14sp"
+                          android:text="粉丝"
+                          android:background="@drawable/zhuye_item_select"
                           android:layout_gravity="center"
                           android:gravity="center"
                           android:layout_height="wrap_content"/>
@@ -314,7 +313,7 @@
                   android:layout_height="0.1dp"></View>
             <TextView android:layout_width="match_parent"
                       android:text="我的钱包"
-                      android:background="@color/white"
+                      android:background="@drawable/zhuye_item_select"
                       android:textColor="@color/text_color"
                       android:textSize="16sp"
                       android:id="@+id/btn_zhangdan"
@@ -329,7 +328,7 @@
                   android:layout_height="0.1dp"></View>
             <TextView android:layout_width="match_parent"
                       android:text="我的关注"
-                      android:background="@color/white"
+                      android:background="@drawable/zhuye_item_select"
                       android:textColor="@color/text_color"
                       android:textSize="16sp"
                       android:id="@+id/btn_guanzhu"
@@ -344,7 +343,7 @@
                   android:layout_height="0.1dp"></View>
             <TextView android:layout_width="match_parent"
                       android:text="我的收藏"
-                      android:background="@color/white"
+                      android:background="@drawable/zhuye_item_select"
                       android:textColor="@color/text_color"
                       android:textSize="16sp"
                       android:id="@+id/btn_favour"
@@ -360,7 +359,7 @@
             <TextView android:layout_width="match_parent"
                       android:text="头条管理"
                       android:id="@+id/btn_news"
-                      android:background="@color/white"
+                      android:background="@drawable/zhuye_item_select"
                       android:textColor="@color/text_color"
                       android:textSize="16sp"
                       android:drawablePadding="8dp"
@@ -377,7 +376,7 @@
             <TextView android:layout_width="match_parent"
                       android:text="我是车主"
                       android:id="@+id/btn_wuliu"
-                      android:background="@color/white"
+                      android:background="@drawable/zhuye_item_select"
                       android:textColor="@color/text_color"
                       android:textSize="16sp"
                       android:drawablePadding="8dp"
@@ -392,7 +391,7 @@
             <TextView android:layout_width="match_parent"
                       android:text="我是货主"
                       android:id="@+id/btn_wuliu_t"
-                      android:background="@color/white"
+                      android:background="@drawable/zhuye_item_select"
                       android:textColor="@color/text_color"
                       android:textSize="16sp"
                       android:drawablePadding="8dp"
@@ -437,7 +436,7 @@
                   android:layout_height="0.1dp"></View>
             <TextView android:layout_width="match_parent"
                       android:text="发布记录"
-                      android:background="@color/white"
+                      android:background="@drawable/zhuye_item_select"
                       android:textColor="@color/text_color"
                       android:textSize="16sp"
                       android:id="@+id/btn_caoyuan"
@@ -452,7 +451,7 @@
                   android:layout_height="0.1dp"></View>
             <TextView android:layout_width="match_parent"
                       android:text="公司简介"
-                      android:background="@color/white"
+                      android:background="@drawable/zhuye_item_select"
                       android:textColor="@color/text_color"
                       android:textSize="16sp"
                       android:id="@+id/btn_company"
@@ -467,7 +466,7 @@
                   android:layout_height="0.1dp"></View>
             <TextView android:layout_width="match_parent"
                       android:text="评论管理"
-                      android:background="@color/white"
+                      android:background="@drawable/zhuye_item_select"
                       android:textColor="@color/text_color"
                       android:textSize="16sp"
                       android:id="@+id/btn_comment"
@@ -483,7 +482,7 @@
                   android:layout_height="0.1dp"></View>
             <TextView android:layout_width="match_parent"
                       android:text="上传坐标"
-                      android:background="@color/white"
+                      android:background="@drawable/zhuye_item_select"
                       android:textColor="@color/text_color"
                       android:textSize="16sp"
                       android:id="@+id/btn_upload"
@@ -498,7 +497,7 @@
                   android:layout_height="0.1dp"></View>
             <TextView android:layout_width="match_parent"
                       android:text="认证中心"
-                      android:background="@color/white"
+                      android:background="@drawable/zhuye_item_select"
                       android:textColor="@color/text_color"
                       android:textSize="16sp"
                       android:id="@+id/btn_renzheng"
@@ -513,7 +512,7 @@
                   android:layout_height="0.1dp"></View>
             <TextView android:layout_width="match_parent"
                       android:text="系统设置"
-                      android:background="@color/white"
+                      android:background="@drawable/zhuye_item_select"
                       android:textColor="@color/text_color"
                       android:textSize="16sp"
                       android:id="@+id/btn_set"

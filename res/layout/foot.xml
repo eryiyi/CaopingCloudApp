@@ -16,12 +16,7 @@
                    android:src="@drawable/nav_home_p"
                    android:id="@+id/foot_one"
                    android:layout_height="wrap_content"/>
-        <!--<TextView android:layout_width="wrap_content"-->
-                  <!--android:text="首页"-->
-                  <!--android:id="@+id/foot_one_text"-->
-                  <!--android:textColor="@color/text_color"-->
-                  <!--android:layout_marginTop="5dp"-->
-                  <!--android:layout_height="wrap_content"/>-->
+
     </LinearLayout>
 
     <LinearLayout android:layout_width="wrap_content"
@@ -35,12 +30,7 @@
                    android:id="@+id/foot_two"
                    android:src="@drawable/nav_cat"
                    android:layout_height="wrap_content"/>
-        <!--<TextView android:layout_width="wrap_content"-->
-                  <!--android:text="分类"-->
-                  <!--android:id="@+id/foot_two_text"-->
-                  <!--android:textColor="@color/text_color"-->
-                  <!--android:layout_marginTop="5dp"-->
-                  <!--android:layout_height="wrap_content"/>-->
+
     </LinearLayout>
 
     <LinearLayout android:layout_width="wrap_content"
@@ -54,12 +44,7 @@
                    android:id="@+id/foot_write"
                    android:src="@drawable/nav_new"
                    android:layout_height="wrap_content"/>
-        <!--<TextView android:layout_width="wrap_content"-->
-        <!--android:text="分类"-->
-        <!--android:id="@+id/foot_two_text"-->
-        <!--android:textColor="@color/text_color"-->
-        <!--android:layout_marginTop="5dp"-->
-        <!--android:layout_height="wrap_content"/>-->
+
     </LinearLayout>
 
     <LinearLayout android:layout_width="wrap_content"
@@ -92,12 +77,7 @@
                     android:textSize="12sp"
                     />
         </RelativeLayout>
-        <!--<TextView android:layout_width="wrap_content"-->
-                  <!--android:text="消息"-->
-                  <!--android:id="@+id/foot_three_text"-->
-                  <!--android:textColor="@color/text_color"-->
-                  <!--android:layout_marginTop="5dp"-->
-                  <!--android:layout_height="wrap_content"/>-->
+
     </LinearLayout>
 
     <LinearLayout android:layout_width="wrap_content"
@@ -111,12 +91,6 @@
                    android:id="@+id/foot_four"
                    android:src="@drawable/nav_mine"
                    android:layout_height="wrap_content"/>
-        <!--<TextView android:layout_width="wrap_content"-->
-                  <!--android:text="我的"-->
-                  <!--android:id="@+id/foot_four_text"-->
-                  <!--android:textColor="@color/text_color"-->
-                  <!--android:layout_marginTop="5dp"-->
-                  <!--android:layout_height="wrap_content"/>-->
     </LinearLayout>
 
 </LinearLayout>

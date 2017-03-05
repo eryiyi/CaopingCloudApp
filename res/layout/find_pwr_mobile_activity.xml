@@ -83,7 +83,7 @@
           android:layout_height="0.1dp"></View>
 
     <Button android:layout_width="match_parent"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:layout_marginTop="15dp"
             android:onClick="findPwrAction"
             android:text="确  定"
@@ -91,6 +91,6 @@
             android:layout_marginLeft="35dp"
             android:padding="15dp"
             android:textColor="@color/white"
-            android:background="@drawable/btn_yellow_radio_shape"
+            android:background="@drawable/btn_green_radio_shape"
             android:layout_height="wrap_content"/>
 </LinearLayout>

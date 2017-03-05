@@ -17,7 +17,7 @@
         android:drawablePadding="6dp"
         android:drawableTop="@drawable/fabuqiuzhi"
         android:gravity="center_horizontal"
-        android:text="草坪" />
+        android:text="卖草坪" />
 
     <TextView
         android:id="@+id/fabu_popup_zijin"
@@ -32,7 +32,7 @@
         android:drawablePadding="6dp"
         android:drawableTop="@drawable/fabushebei"
         android:gravity="center_horizontal"
-        android:text="种子" />
+        android:text="卖草种" />
 
     <TextView
         android:id="@+id/fabu_popup_shebei"
@@ -45,7 +45,7 @@
         android:drawablePadding="6dp"
         android:drawableTop="@drawable/fabujuben"
         android:gravity="center_horizontal"
-        android:text="机械" />
+        android:text="卖机械" />
 
     <TextView
         android:id="@+id/fabu_popup_juben"
@@ -58,7 +58,7 @@
         android:drawablePadding="6dp"
         android:drawableTop="@drawable/fabudongtai"
         android:gravity="center_horizontal"
-        android:text="头条" />
+        android:text="行业圈" />
 
     <TextView
         android:id="@+id/fabu_popup_rencai"
@@ -73,7 +73,7 @@
         android:drawablePadding="6dp"
         android:drawableTop="@drawable/fabuzhaoshebei"
         android:gravity="center_horizontal"
-        android:text="车主" />
+        android:text="找货源" />
 
     <TextView
         android:id="@+id/fabu_popup_changdi"
@@ -86,7 +86,7 @@
         android:drawablePadding="6dp"
         android:drawableTop="@drawable/fabuzhaochangdi"
         android:gravity="center_horizontal"
-        android:text="货主" />
+        android:text="找车源" />
 
     <ImageView
         android:id="@+id/fabu_popup_close_img"

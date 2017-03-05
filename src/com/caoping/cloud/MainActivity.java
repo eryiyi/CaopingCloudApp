@@ -1,7 +1,10 @@
 package com.caoping.cloud;
 
 import android.annotation.TargetApi;
+import android.app.Dialog;
 import android.content.*;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Build;
@@ -22,10 +25,12 @@ import com.caoping.cloud.base.BaseActivity;
 import com.caoping.cloud.base.InternetURL;
 import com.caoping.cloud.camera.util.MipcaActivityCapture;
 import com.caoping.cloud.data.CityDATA;
+import com.caoping.cloud.data.VersionUpdateObjData;
 import com.caoping.cloud.db.DBHelper;
 import com.caoping.cloud.entiy.City;
 import com.caoping.cloud.entiy.LxAd;
 import com.caoping.cloud.entiy.PayScanObj;
+import com.caoping.cloud.entiy.VersionUpdateObj;
 import com.caoping.cloud.fragment.*;
 import com.caoping.cloud.huanxin.Constant;
 import com.caoping.cloud.huanxin.DemoHelper;
@@ -164,6 +169,107 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,M
 //        } else {
 //
 //        }
+
+        checkVersion();
+    }
+
+    void checkVersion(){
+            StringRequest request = new StringRequest(
+                    Request.Method.POST,
+                    InternetURL.CHECK_VERSION_CODE_URL,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String s) {
+                            if (StringUtil.isJson(s)) {
+                                try {
+                                    JSONObject jo = new JSONObject(s);
+                                    String code1 = jo.getString("code");
+                                    if (Integer.parseInt(code1) == 200) {
+                                        VersionUpdateObjData data = getGson().fromJson(s, VersionUpdateObjData.class);
+                                        VersionUpdateObj versionUpdateObj = data.getData();
+                                        if("true".equals(versionUpdateObj.getFlag())){
+                                            showVersionDialog(versionUpdateObj.getDurl());
+
+                                        }else{
+                                            showMsg(MainActivity.this, "已是最新版本");
+                                        }
+                                    }
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+                            } else {
+                                Toast.makeText(MainActivity.this, R.string.get_data_error, Toast.LENGTH_SHORT).show();
+                            }
+                            if (progressDialog != null) {
+                                progressDialog.dismiss();
+                            }
+                        }
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError volleyError) {
+                            if (progressDialog != null) {
+                                progressDialog.dismiss();
+                            }
+                            Toast.makeText(MainActivity.this, R.string.get_data_error, Toast.LENGTH_SHORT).show();
+                        }
+                    }
+            ) {
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    Map<String, String> params = new HashMap<String, String>();
+                    params.put("mm_version_code", getV());
+                    params.put("mm_version_package", "com.caoping.cloud");
+                    return params;
+                }
+
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    Map<String, String> params = new HashMap<String, String>();
+                    params.put("Content-Type", "application/x-www-form-urlencoded");
+                    return params;
+                }
+            };
+            getRequestQueue().add(request);
+
+    }
+
+    private void showVersionDialog(final String url) {
+        final Dialog picAddDialog = new Dialog(MainActivity.this, R.style.dialog);
+        View picAddInflate = View.inflate(this, R.layout.dialog_new_version, null);
+        TextView btn_sure = (TextView) picAddInflate.findViewById(R.id.btn_sure);
+        btn_sure.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //更新
+                final Uri uri = Uri.parse(url);
+                final Intent it = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(it);
+                picAddDialog.dismiss();
+            }
+        });
+
+        //取消
+        TextView btn_cancel = (TextView) picAddInflate.findViewById(R.id.btn_cancel);
+        btn_cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                picAddDialog.dismiss();
+            }
+        });
+        picAddDialog.setContentView(picAddInflate);
+        picAddDialog.show();
+    }
+
+    String getV(){
+        try {
+            PackageManager manager = this.getPackageManager();
+            PackageInfo info = manager.getPackageInfo(this.getPackageName(), 0);
+            return info.versionName;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "";
+        }
     }
 
     @TargetApi(23)
@@ -517,9 +623,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,M
                 break;
         }
     }
-
-
-
 
 
     //----------------------------huanxin----------------------------

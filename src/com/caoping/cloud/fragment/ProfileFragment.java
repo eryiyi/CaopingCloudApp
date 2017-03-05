@@ -714,10 +714,10 @@ public class ProfileFragment extends BaseFragment  implements View.OnClickListen
                                 if(payAmountObj != null){
                                     profile_content.setText("亲爱的"+getGson().fromJson(getSp().getString("empName", ""), String.class)
                                             +"先生，您加入草坪云已"+(payAmountObj.getRuzhuNumber()==null?"1":payAmountObj.getRuzhuNumber())+"天，消费"+(payAmountObj.getZhichuAmount()==null?"0":payAmountObj.getZhichuAmount())+"元，收入"+(payAmountObj.getShouruAmount()==null?"0":payAmountObj.getShouruAmount())+"元。");
-                                    profile_txt_two.setText("我的草原"+(payAmountObj.getCpNumber()==null?"0":payAmountObj.getCpNumber()));
-                                    profile_txt_three.setText("销售订单"+(payAmountObj.getGoodsCountTwo()==null?"0":payAmountObj.getGoodsCountTwo()));
-                                    profile_txt_four.setText("采购订单"+(payAmountObj.getGoodsCountOne()==null?"0":payAmountObj.getGoodsCountOne()));
-                                    profile_txt_five.setText("粉丝"+(payAmountObj.getFensiNumber()==null?"0":payAmountObj.getFensiNumber()));
+//                                    profile_txt_two.setText("我的草原"+(payAmountObj.getCpNumber()==null?"0":payAmountObj.getCpNumber()));
+//                                    profile_txt_three.setText("销售订单"+(payAmountObj.getGoodsCountTwo()==null?"0":payAmountObj.getGoodsCountTwo()));
+//                                    profile_txt_four.setText("采购订单"+(payAmountObj.getGoodsCountOne()==null?"0":payAmountObj.getGoodsCountOne()));
+//                                    profile_txt_five.setText("粉丝"+(payAmountObj.getFensiNumber()==null?"0":payAmountObj.getFensiNumber()));
                                 }
                             }
                         }

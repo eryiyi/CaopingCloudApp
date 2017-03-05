@@ -14,7 +14,6 @@
               android:layout_centerHorizontal="true"
               android:layout_height="60dp"/>
     <TextView android:layout_width="wrap_content"
-              android:text="日报"
               android:padding="6dp"
               android:textSize="15sp"
               android:textColor="@color/text_color"

@@ -152,7 +152,7 @@
           android:background="@color/gray"
           android:layout_height="0.1dp"></View>
     <Button android:layout_width="match_parent"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:layout_marginTop="15dp"
             android:onClick="loginAction"
             android:text="手机快速注册"
@@ -179,7 +179,7 @@
                   android:layout_height="wrap_content"/>
     </LinearLayout>
     <Button android:layout_width="match_parent"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:layout_marginTop="15dp"
             android:onClick="findAction"
             android:text="找回账号/密码"

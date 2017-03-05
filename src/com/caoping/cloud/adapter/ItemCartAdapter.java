@@ -1,19 +1,25 @@
 package com.caoping.cloud.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.caoping.cloud.CaopingCloudApplication;
 import com.caoping.cloud.R;
 import com.caoping.cloud.entiy.ShoppingCart;
+import com.caoping.cloud.ui.MineCartActivity;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -76,9 +82,11 @@ public class ItemCartAdapter extends BaseAdapter {
             holder.item_cart_nickname = (TextView) convertView.findViewById(R.id.item_cart_nickname);
             holder.item_cart_edit = (ImageView) convertView.findViewById(R.id.item_cart_edit);
 
+
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
+            holder.item_cart_num.setTag(position);
         }
         final ShoppingCart favour = findEmps.get(position);
         String[] arrs = favour.getGoods_cover().split(",");
@@ -131,6 +139,35 @@ public class ItemCartAdapter extends BaseAdapter {
                 onClickContentItemListener.onClickContentItem(position, 5, null);
             }
         });
+
+        //为editText设置TextChangedListener，每次改变的值设置到hashMap
+        //我们要拿到里面的值根据position拿值
+//        holder.item_cart_num.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//
+//            }
+//
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start,
+//                                          int count, int after) {
+//
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//                //将editText中改变的值设置的HashMap中
+//                MineCartActivity.hashMap.put(position, s.toString());
+//                Intent intent1 = new Intent("goods_number_change");
+//                mContext.sendBroadcast(intent1);
+//            }
+//        });
+
+        //如果hashMap不为空，就设置的editText
+//        if(MineCartActivity.hashMap.get(position) != null){
+//            holder.item_cart_num.setText(MineCartActivity.hashMap.get(position));
+//        }
+
         return convertView;
     }
 

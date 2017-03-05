@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
+              android:id="@+id/main"
               android:background="@color/main_bg"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
@@ -107,7 +108,7 @@
                       android:layout_gravity="center"
                       android:gravity="center"
                       android:padding="12dp"
-                      android:background="@drawable/btn_yellow_radio_shape"
+                      android:background="@drawable/btn_green_radio_shape"
                       android:id="@+id/bottom_btn_three"
                       android:textColor="@color/white"
                       android:layout_centerVertical="true"
@@ -115,6 +116,7 @@
             <TextView android:layout_width="0dp"
                       android:layout_weight="1.5"
                       android:text="购买"
+                      android:visibility="gone"
                       android:layout_gravity="center"
                       android:gravity="center"
                       android:padding="12dp"

@@ -1,11 +1,17 @@
 package com.caoping.cloud.ui;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.webkit.*;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.android.volley.AuthFailureError;
@@ -23,7 +29,9 @@ import com.caoping.cloud.entiy.ShoppingCart;
 import com.caoping.cloud.huanxin.ui.ChatActivity;
 import com.caoping.cloud.util.DateUtil;
 import com.caoping.cloud.util.StringUtil;
+import com.caoping.cloud.widget.CartPopWindow;
 import com.caoping.cloud.widget.MenuPopMenu;
+import com.caoping.cloud.widget.SelectPhoPopWindow;
 import com.umeng.socialize.ShareAction;
 import com.umeng.socialize.UMShareAPI;
 import com.umeng.socialize.UMShareListener;
@@ -34,6 +42,7 @@ import com.umeng.socialize.utils.Log;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.File;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -165,6 +174,7 @@ public class DetailGoodsActivity extends BaseActivity implements MenuPopMenu.OnI
         this.findViewById(R.id.bottom_btn_four).setOnClickListener(this);
     }
 
+    ShoppingCart shoppingCart = null;
     @Override
     public void onClick(View view) {
         switch (view.getId()){
@@ -215,7 +225,7 @@ public class DetailGoodsActivity extends BaseActivity implements MenuPopMenu.OnI
                             arras[0] = arr[0];
                         }
                     }
-                    ShoppingCart shoppingCart = new ShoppingCart();
+                    shoppingCart = new ShoppingCart();
                     shoppingCart.setCartid(StringUtil.getUUID());
                     shoppingCart.setGoods_id(cpObj.getCloud_caoping_id());
                     shoppingCart.setEmp_id(cpObj.getEmp_id() == null ? "" : cpObj.getEmp_id());
@@ -234,8 +244,9 @@ public class DetailGoodsActivity extends BaseActivity implements MenuPopMenu.OnI
                     shoppingCart.setIs_zhiying("0");
                     shoppingCart.setEmp_name(cpObj.getEmp_name());
                     shoppingCart.setEmp_cover(cpObj.getEmp_cover());
-                    DBHelper.getInstance(DetailGoodsActivity.this).addShoppingToTable(shoppingCart);
-                    Toast.makeText(DetailGoodsActivity.this, R.string.add_cart_success, Toast.LENGTH_SHORT).show();
+
+                    ShowPickDialog();
+
                 }
             }
                 break;
@@ -269,12 +280,13 @@ public class DetailGoodsActivity extends BaseActivity implements MenuPopMenu.OnI
                 }
                 shoppingCart.setSell_price(cpObj.getCloud_caoping_prices());
                 shoppingCart.setMarketPrice(cpObj.getCloud_caoping_prices());
-                shoppingCart.setGoods_count("1");
+
                 shoppingCart.setDateline(DateUtil.getCurrentDateTime());
                 shoppingCart.setIs_select("0");//默认选中
                 shoppingCart.setIs_zhiying("0");
                 shoppingCart.setEmp_name(cpObj.getEmp_name());
                 shoppingCart.setEmp_cover(cpObj.getEmp_cover());
+                shoppingCart.setGoods_count("1");
                 arrayList.add(shoppingCart);
 
                 if(arrayList !=null && arrayList.size() > 0){
@@ -294,6 +306,74 @@ public class DetailGoodsActivity extends BaseActivity implements MenuPopMenu.OnI
 
         }
     }
+
+    private void ShowPickDialog() {
+        final Dialog picAddDialog = new Dialog(DetailGoodsActivity.this, R.style.dialog);
+        View picAddInflate = View.inflate(this, R.layout.cart_pop_view, null);
+        TextView btn_sure = (TextView) picAddInflate.findViewById(R.id.btn_sure);
+        final EditText countNumber = (EditText) picAddInflate.findViewById(R.id.countNumber);
+        btn_sure.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!StringUtil.isNullOrEmpty(countNumber.getText().toString())){
+                    shoppingCart.setGoods_count(countNumber.getText().toString());
+                    DBHelper.getInstance(DetailGoodsActivity.this).addShoppingToTable(shoppingCart);
+                    Toast.makeText(DetailGoodsActivity.this, R.string.add_cart_success, Toast.LENGTH_SHORT).show();
+                    picAddDialog.dismiss();
+                }else{
+                    showMsg(DetailGoodsActivity.this, "请输入要购买的数量！");
+                    return;
+                }
+            }
+        });
+
+        //取消
+        TextView btn_cancle = (TextView) picAddInflate.findViewById(R.id.btn_cancle);
+        btn_cancle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                picAddDialog.dismiss();
+            }
+        });
+        picAddDialog.setContentView(picAddInflate);
+        picAddDialog.show();
+    }
+
+//    private CartPopWindow cartPopWindow ;
+//    // 选择相册，相机
+//    private void ShowPickDialog() {
+//        cartPopWindow = new CartPopWindow(DetailGoodsActivity.this, itemsOnClick);
+//        //显示窗口
+//        cartPopWindow.showAtLocation(this.findViewById(R.id.main), Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
+//
+//    }
+//
+//    //为弹出窗口实现监听类
+//    private View.OnClickListener itemsOnClick = new View.OnClickListener() {
+//
+//        public void onClick(View v) {
+//            switch (v.getId()) {
+//                case R.id.btn_sure: {
+//                    if(!StringUtil.isNullOrEmpty(cartPopWindow.countNumber.getText().toString())){
+//                        shoppingCart.setGoods_count(cartPopWindow.countNumber.getText().toString());
+//                        DBHelper.getInstance(DetailGoodsActivity.this).addShoppingToTable(shoppingCart);
+//                        Toast.makeText(DetailGoodsActivity.this, R.string.add_cart_success, Toast.LENGTH_SHORT).show();
+//                    }else{
+//                        showMsg(DetailGoodsActivity.this, "请输入要购买的数量！");
+//                        return;
+//                    }
+//                }
+//                break;
+//                case R.id.btn_cancle: {
+//
+//                }
+//                break;
+//                default:
+//                    break;
+//            }
+//            cartPopWindow.dismiss();
+//        }
+//    };
 
     private void favour() {
         StringRequest request = new StringRequest(

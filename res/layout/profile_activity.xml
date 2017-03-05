@@ -24,7 +24,6 @@
                        android:layout_centerHorizontal="true"
                        android:layout_height="50dp"/>
             <TextView android:layout_width="wrap_content"
-                      android:text="盛博农业发展有限公司"
                       android:layout_below="@+id/cover"
                       android:id="@+id/company"
                       android:textColor="@color/white"
