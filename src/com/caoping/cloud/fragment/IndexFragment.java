@@ -139,6 +139,7 @@ public class IndexFragment extends BaseFragment implements View.OnClickListener,
         view.findViewById(R.id.btn_wldt).setOnClickListener(this);
         mTextView02 = (AutoTextView) view.findViewById(R.id.switcher02);
         adapterAd = new IndexAdViewPagerAdapter(getActivity());
+        view.findViewById(R.id.btn_add).setOnClickListener(this);
     }
 
 //    int selectC = 0;
@@ -236,6 +237,12 @@ public class IndexFragment extends BaseFragment implements View.OnClickListener,
                 startActivity(intent);
             }
             break;
+            case R.id.btn_add:
+            {
+                Intent intent = new Intent(getActivity(), MineCartActivity.class);
+                startActivity(intent);
+            }
+                break;
         }
     }
 

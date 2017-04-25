@@ -14,7 +14,7 @@ import org.json.JSONObject;
 public class AboutActivity extends BaseActivity {
     private static final int PICTURE_COUNT = 3;
 
-    private static final int[] PICTURE_RESOURCES = {R.drawable.loading_one,
+    private static final int[] PICTURE_RESOURCES = {R.drawable.load,
             R.drawable.loading_two, R.drawable.loading_three};
 
     private static final String[] PICTURE_TITLE = {"第一张图片", "第二张图片", "第三张图片"};

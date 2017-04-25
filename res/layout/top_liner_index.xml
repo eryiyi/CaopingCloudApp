@@ -50,15 +50,17 @@
                   android:textColor="@color/text_color_two"
                   android:layout_height="match_parent"/>
 
-        <ImageView android:layout_width="wrap_content"
+        <TextView android:layout_width="wrap_content"
                    android:layout_marginRight="8dp"
                    android:layout_marginLeft="8dp"
-                   android:onClick="onTopMenuPopupButtonClick"
+                   android:text="结算"
+                   android:gravity="center"
+                   android:textColor="@color/white"
                    android:layout_centerVertical="true"
                    android:id="@+id/btn_add"
                    android:layout_alignParentRight="true"
-                   android:src="@drawable/cart_white"
-                   android:layout_height="wrap_content"/>
+                   android:layout_height="@dimen/top_title_height"/>
+
         <!--<ImageView android:layout_width="25dp"-->
                    <!--android:id="@+id/msg"-->
                    <!--android:layout_marginLeft="6dp"-->

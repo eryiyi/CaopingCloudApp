@@ -70,10 +70,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,M
     private ImageView foot_three;
     private ImageView foot_four;
 
-//    private TextView foot_one_text;
-//    private TextView foot_two_text;
-//    private TextView foot_three_text;
-//    private TextView foot_four_text;
+    private TextView foot_one_text;
+    private TextView foot_two_text;
+    private TextView foot_three_text;
+    private TextView foot_four_text;
 
     //设置底部图标
     Resources res;
@@ -289,7 +289,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,M
 
 
     private void initView() {
-        unreadLabel = (TextView) findViewById(R.id.home_item_photo).findViewById(R.id.unread_number);
+        unreadLabel = (TextView) findViewById(R.id.home_item_photo).findViewById(R.id.unread_msg_number);
 
         foot_one = (ImageView) this.findViewById(R.id.foot_one);
         foot_two = (ImageView) this.findViewById(R.id.foot_two);
@@ -302,10 +302,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,M
 
         this.findViewById(R.id.btn_write).setOnClickListener(this);
 
-//        foot_one_text = (TextView) this.findViewById(R.id.foot_one_text);
-//        foot_two_text = (TextView) this.findViewById(R.id.foot_two_text);
-//        foot_three_text = (TextView) this.findViewById(R.id.foot_three_text);
-//        foot_four_text = (TextView) this.findViewById(R.id.foot_four_text);
+        foot_one_text = (TextView) this.findViewById(R.id.foot_one_text);
+        foot_two_text = (TextView) this.findViewById(R.id.foot_two_text);
+        foot_three_text = (TextView) this.findViewById(R.id.foot_three_text);
+        foot_four_text = (TextView) this.findViewById(R.id.foot_four_text);
     }
 
     public void switchFragment(int id) {
@@ -324,10 +324,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,M
                 foot_three.setImageResource(R.drawable.nav_msg);
                 foot_four.setImageResource(R.drawable.nav_mine);
 
-//                foot_one_text.setTextColor(res.getColor(R.color.green));
-//                foot_two_text.setTextColor(res.getColor(R.color.text_color));
-//                foot_three_text.setTextColor(res.getColor(R.color.text_color));
-//                foot_four_text.setTextColor(res.getColor(R.color.text_color));
+                foot_one_text.setTextColor(res.getColor(R.color.red));
+                foot_two_text.setTextColor(res.getColor(R.color.text_color));
+                foot_three_text.setTextColor(res.getColor(R.color.text_color));
+                foot_four_text.setTextColor(res.getColor(R.color.text_color));
                 currentTabIndex = 0;
                 break;
             case R.id.foot_liner_two:
@@ -342,10 +342,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,M
                 foot_three.setImageResource(R.drawable.nav_msg);
                 foot_four.setImageResource(R.drawable.nav_mine);
 
-//                foot_one_text.setTextColor(res.getColor(R.color.text_color));
-//                foot_two_text.setTextColor(res.getColor(R.color.green));
-//                foot_three_text.setTextColor(res.getColor(R.color.text_color));
-//                foot_four_text.setTextColor(res.getColor(R.color.text_color));
+                foot_one_text.setTextColor(res.getColor(R.color.text_color));
+                foot_two_text.setTextColor(res.getColor(R.color.red));
+                foot_three_text.setTextColor(res.getColor(R.color.text_color));
+                foot_four_text.setTextColor(res.getColor(R.color.text_color));
                 currentTabIndex = 1;
                 break;
             case R.id.foot_liner_three:
@@ -360,10 +360,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,M
                 foot_three.setImageResource(R.drawable.nav_msg_p);
                 foot_four.setImageResource(R.drawable.nav_mine);
 
-//                foot_one_text.setTextColor(res.getColor(R.color.text_color));
-//                foot_two_text.setTextColor(res.getColor(R.color.text_color));
-//                foot_three_text.setTextColor(res.getColor(R.color.green));
-//                foot_four_text.setTextColor(res.getColor(R.color.text_color));
+                foot_one_text.setTextColor(res.getColor(R.color.text_color));
+                foot_two_text.setTextColor(res.getColor(R.color.text_color));
+                foot_three_text.setTextColor(res.getColor(R.color.red));
+                foot_four_text.setTextColor(res.getColor(R.color.text_color));
                 currentTabIndex = 2;
                 break;
             case R.id.foot_liner_four:
@@ -378,10 +378,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,M
                 foot_three.setImageResource(R.drawable.nav_msg);
                 foot_four.setImageResource(R.drawable.nav_mine_p);
 
-//                foot_one_text.setTextColor(res.getColor(R.color.text_color));
-//                foot_two_text.setTextColor(res.getColor(R.color.text_color));
-//                foot_three_text.setTextColor(res.getColor(R.color.text_color));
-//                foot_four_text.setTextColor(res.getColor(R.color.green));
+                foot_one_text.setTextColor(res.getColor(R.color.text_color));
+                foot_two_text.setTextColor(res.getColor(R.color.text_color));
+                foot_three_text.setTextColor(res.getColor(R.color.text_color));
+                foot_four_text.setTextColor(res.getColor(R.color.red));
                 currentTabIndex = 3;
                 break;
 
@@ -420,7 +420,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,M
         }
         if (v.getId() == R.id.btn_write) {
            //发布
-            startActivity(new Intent(MainActivity.this, IssueSelectorActivity.class));
+            startActivity(new Intent(MainActivity.this, AddSelectActivity.class));
         } else {
             switchFragment(v.getId());
         }
@@ -537,23 +537,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,M
         startActivityForResult(intent, SCANNIN_GREQUEST_CODE);
     }
 
-    //下拉菜单
-    private MenuPopMenu menu;
-    List<String> arrayMenu = new ArrayList<String>();
-
-    public void onTopMenuPopupButtonClick(View view) {
-//        arrayMenu.clear();
-//        arrayMenu.add("草坪发布");
-//        arrayMenu.add("草种发布");
-//        arrayMenu.add("机械发布");
-//        arrayMenu.add("物流发布");
-//        //顶部右侧按钮
-//        menu = new MenuPopMenu(MainActivity.this, arrayMenu);
-//        menu.setOnItemClickListener(this);
-//        menu.showAsDropDown(view);
-        Intent intent = new Intent(MainActivity.this, MineCartActivity.class);
-        startActivity(intent);
-    }
 
     @Override
     public void onItemClick(int index) {

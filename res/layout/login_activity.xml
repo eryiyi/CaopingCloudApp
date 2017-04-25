@@ -15,10 +15,10 @@
                   android:layout_marginTop="8dp"
                   android:background="@color/white"
                   android:layout_height="wrap_content">
-        <ImageView android:layout_width="wrap_content"
+        <ImageView android:layout_width="80dp"
                    android:src="@drawable/ic_launcher"
                    android:layout_gravity="center_horizontal"
-                   android:layout_height="wrap_content"/>
+                   android:layout_height="80dp"/>
         <RelativeLayout android:layout_width="match_parent"
                         android:gravity="center_vertical"
                         android:layout_marginTop="8dp"
@@ -67,7 +67,7 @@
 
     <LinearLayout android:layout_width="match_parent"
                   android:orientation="horizontal"
-                  android:padding="15dp"
+                  android:padding="12dp"
                   android:layout_height="wrap_content">
         <Button android:layout_width="0dp"
                 android:layout_weight="1"
@@ -75,7 +75,7 @@
                 android:onClick="regAction"
                 android:text="注 册"
                 android:layout_marginLeft="8dp"
-                android:padding="15dp"
+                android:padding="12dp"
                 android:textColor="@color/white"
                 android:background="@drawable/btn_yellow_radio_shape"
                 android:layout_height="wrap_content"/>
@@ -86,7 +86,7 @@
                 android:text="登 录"
                 android:layout_marginRight="8dp"
                 android:layout_marginLeft="15dp"
-                android:padding="15dp"
+                android:padding="12dp"
                 android:textColor="@color/white"
                 android:background="@drawable/btn_green_radio_shape"
                 android:layout_height="wrap_content"/>

@@ -170,6 +170,7 @@ public class PaySelectActivity extends BaseActivity implements View.OnClickListe
 //            count_money_all.getPaint().setFlags(Paint. STRIKE_THRU_TEXT_FLAG); //中划线
         }
     }
+
     private int selectPayWay = 0;//0微信 1支付宝  2零钱
     @Override
     public void onClick(View view) {

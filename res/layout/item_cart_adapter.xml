@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:orientation="vertical"
                 android:padding="8dp"
                 android:background="@color/white"
@@ -33,8 +33,8 @@
                    android:layout_alignParentRight="true"
                    android:id="@+id/item_cart_edit"
                    android:layout_height="wrap_content"/>
-
     </RelativeLayout>
+
     <View android:layout_width="match_parent"
           android:layout_below="@+id/relate_one"
           android:id="@+id/view_one"
@@ -43,67 +43,79 @@
           android:background="@color/gray"
           android:layout_height="0.3dp"></View>
 
-    <ImageView android:layout_width="60dp"
-               android:src="@drawable/ic_launcher"
-               android:layout_marginTop="6dp"
-               android:scaleType="centerCrop"
-               android:layout_below="@+id/view_one"
-               android:id="@+id/item_cart_pic"
-               android:layout_marginLeft="3dp"
-               android:layout_height="60dp"/>
-    <TextView android:layout_width="match_parent"
-              android:id="@+id/item_cart_cont"
-              android:ellipsize="end"
-              android:layout_below="@+id/view_one"
-              android:textColor="@color/text_color"
-              android:layout_marginLeft="5dp"
-              android:layout_marginTop="6dp"
-              android:textSize="14sp"
-              android:gravity="center_vertical"
-              android:lineSpacingMultiplier="1.2"
-              android:layout_toRightOf="@+id/item_cart_pic"
-              android:maxHeight="40dp"
-              android:layout_height="wrap_content"/>
-    <TextView android:layout_width="wrap_content"
-              android:layout_marginTop="8dp"
-              android:id="@+id/item_cart_price"
-              android:textSize="16sp"
-              android:layout_below="@+id/item_cart_cont"
-              android:layout_toRightOf="@+id/item_cart_pic"
-              android:layout_marginLeft="5dp"
-              android:textColor="@color/red"
-              android:layout_height="wrap_content"/>
-    <LinearLayout android:layout_width="wrap_content"
-                  android:orientation="horizontal"
-                  android:layout_marginTop="8dp"
-                  android:layout_below="@+id/item_cart_cont"
-                  android:layout_alignParentRight="true"
-                  android:layout_height="wrap_content">
-        <ImageView android:layout_width="wrap_content"
-                   android:src="@drawable/cart_jian"
-                   android:id="@+id/item_cart_jian"
-                   android:layout_height="wrap_content"/>
-        <TextView android:layout_width="wrap_content"
-                  android:layout_gravity="center"
-                  android:gravity="center"
-                  android:background="@null"
-                  android:layout_marginLeft="10dp"
-                  android:layout_marginRight="10dp"
-                  android:id="@+id/item_cart_num"
+    <RelativeLayout android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+        <ImageView android:layout_width="60dp"
+                   android:src="@drawable/ic_launcher"
+                   android:layout_marginTop="6dp"
+                   android:scaleType="centerCrop"
+                   android:id="@+id/item_cart_pic"
+                   android:layout_marginLeft="3dp"
+                   android:layout_height="60dp"/>
+        <TextView android:layout_width="match_parent"
+                  android:id="@+id/item_cart_cont"
+                  android:ellipsize="end"
                   android:textColor="@color/text_color"
+                  android:layout_marginLeft="5dp"
+                  android:layout_marginTop="6dp"
+                  android:textSize="14sp"
+                  android:gravity="center_vertical"
+                  android:lineSpacingMultiplier="1.2"
+                  android:layout_toRightOf="@+id/item_cart_pic"
+                  android:maxHeight="40dp"
                   android:layout_height="wrap_content"/>
-        <ImageView android:layout_width="wrap_content"
-                   android:src="@drawable/cart_add"
-                   android:id="@+id/item_cart_add"
-                   android:layout_height="wrap_content"/>
+        <LinearLayout android:layout_width="match_parent"
+                      android:orientation="horizontal"
+                      android:layout_marginTop="8dp"
+                      android:layout_marginLeft="8dp"
+                      android:gravity="center_vertical"
+                      android:layout_below="@+id/item_cart_cont"
+                      android:layout_toRightOf="@+id/item_cart_pic"
+                      android:layout_height="36dp">
+            <ImageView android:layout_width="36dp"
+                       android:src="@drawable/cart_jian"
+                       android:id="@+id/item_cart_jian"
+                       android:layout_height="36dp"/>
+            <TextView android:layout_width="wrap_content"
+                      android:layout_gravity="center"
+                      android:layout_weight="1"
+                      android:gravity="center"
+                      android:layout_marginLeft="3dp"
+                      android:layout_marginRight="3dp"
+                      android:background="@color/FAFAFA"
+                      android:id="@+id/item_cart_num"
+                      android:textColor="@color/text_color"
+                      android:layout_height="match_parent"/>
+            <ImageView android:layout_width="36dp"
+                       android:src="@drawable/cart_add"
+                       android:id="@+id/item_cart_add"
+                       android:scaleType="fitXY"
+                       android:layout_height="36dp"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout android:layout_width="match_parent"
+                  android:orientation="horizontal"
+                  android:gravity="center"
+                  android:layout_height="40dp">
+        <TextView android:layout_width="0dp"
+                  android:layout_weight="1"
+                  android:layout_marginTop="8dp"
+                  android:id="@+id/item_cart_price"
+                  android:textSize="16sp"
+                  android:layout_marginLeft="15dp"
+                  android:textColor="@color/red"
+                  android:layout_height="wrap_content"/>
+
+        <TextView android:layout_width="0dp"
+                  android:layout_weight="1"
+                  android:text="运费结算:买方到付"
+                  android:layout_marginLeft="5dp"
+                  android:textSize="14sp"
+                  android:gravity="right"
+                  android:layout_marginTop="5dp"
+                  android:textColor="@color/text_color_two"
+                  android:layout_height="wrap_content"/>
     </LinearLayout>
-    <TextView android:layout_width="wrap_content"
-              android:text="**运费到付**"
-              android:layout_toRightOf="@+id/item_cart_pic"
-              android:layout_marginLeft="5dp"
-              android:textSize="14sp"
-              android:layout_marginTop="5dp"
-              android:layout_below="@+id/item_cart_price"
-              android:textColor="@color/text_color_two"
-              android:layout_height="wrap_content"/>
-</RelativeLayout>
+
+</LinearLayout>
