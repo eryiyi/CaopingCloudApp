@@ -6,13 +6,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.ViewPager;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,26 +23,24 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.caoping.cloud.CaopingCloudApplication;
 import com.caoping.cloud.R;
-import com.caoping.cloud.adapter.AnimateFirstDisplayListener;
-import com.caoping.cloud.adapter.IndexAdViewPagerAdapter;
-import com.caoping.cloud.adapter.ItemIndexGoodsAdapter;
-import com.caoping.cloud.adapter.OnClickContentItemListener;
+import com.caoping.cloud.adapter.*;
 import com.caoping.cloud.base.BaseFragment;
 import com.caoping.cloud.base.InternetURL;
 import com.caoping.cloud.data.CompanyData;
+import com.caoping.cloud.data.CpObjData;
 import com.caoping.cloud.data.LxAdData;
 import com.caoping.cloud.data.NewsObjData;
 import com.caoping.cloud.entiy.Company;
+import com.caoping.cloud.entiy.CpObj;
 import com.caoping.cloud.entiy.LxAd;
 import com.caoping.cloud.entiy.NewsObj;
-import com.caoping.cloud.library.HeaderGridView;
 import com.caoping.cloud.library.PullToRefreshBase;
-import com.caoping.cloud.library.PullToRefreshHeadGridView;
+import com.caoping.cloud.library.PullToRefreshListView;
 import com.caoping.cloud.ui.*;
 import com.caoping.cloud.util.StringUtil;
 import com.caoping.cloud.widget.AutoTextView;
+import com.caoping.cloud.widget.PictureGridview;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import org.json.JSONException;
@@ -65,15 +63,15 @@ public class IndexFragment extends BaseFragment implements View.OnClickListener,
     private Resources res;
 
     private EditText keywords;
-//    private ImageView msg;
+    private ImageView msg;
 
-//    private PullToRefreshHeadGridView lstv;
-//    private ItemIndexGoodsAdapter adapter;
-//    List<Company> listMq = new ArrayList<Company>();
-//    private int pageIndex = 1;
-//    private static boolean IS_REFRESH = true;
+    private PullToRefreshListView lstv;
+    private ItemCaozhongAdapter adapter;
+    List<CpObj> listCz = new ArrayList<CpObj>();
+    private int pageIndex = 1;
+    private static boolean IS_REFRESH = true;
 
-//    private View headLiner;
+    private View headLiner;
     //轮播广告
     private ViewPager viewpager;
     private IndexAdViewPagerAdapter adapterAd;
@@ -88,6 +86,9 @@ public class IndexFragment extends BaseFragment implements View.OnClickListener,
     private TextView txt_news_one;
     private TextView txt_news_two;
 
+    private PictureGridview pictureGridview;
+    private ItemMingqiAdapter1 adaptermq;
+    private List<Company> listmq = new ArrayList<Company>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -101,8 +102,10 @@ public class IndexFragment extends BaseFragment implements View.OnClickListener,
         res = getActivity().getResources();
         initView();
         getAds();
-//        getNewsCompanys();
+        getNewsCompanys();
         getNews();
+        initData();
+        getmq();
         return view;
     }
 
@@ -125,48 +128,110 @@ public class IndexFragment extends BaseFragment implements View.OnClickListener,
                 }
             }
         });
+        lstv = (PullToRefreshListView) view.findViewById(R.id.lstv);
+        adapter = new ItemCaozhongAdapter( listCz, getActivity());
+        lstv.setMode(PullToRefreshBase.Mode.BOTH);
+        lstv.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener2<ListView>() {
+            @Override
+            public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
+                String label = DateUtils.formatDateTime(getActivity(), System.currentTimeMillis(),
+                        DateUtils.FORMAT_SHOW_TIME | DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_ABBREV_ALL);
 
-        txt_news_one = (TextView) view.findViewById(R.id.txt_news_one);
-        txt_news_two = (TextView) view.findViewById(R.id.txt_news_two);
-        view.findViewById(R.id.btn_one).setOnClickListener(this);
-        view.findViewById(R.id.btn_two).setOnClickListener(this);
-        view.findViewById(R.id.btn_three).setOnClickListener(this);
-        view.findViewById(R.id.btn_five).setOnClickListener(this);
-        view.findViewById(R.id.relate_news).setOnClickListener(this);
-        view.findViewById(R.id.btn_xstj).setOnClickListener(this);
-        view.findViewById(R.id.btn_mqfc).setOnClickListener(this);
-        view.findViewById(R.id.btn_czgy).setOnClickListener(this);
-        view.findViewById(R.id.btn_wldt).setOnClickListener(this);
-        mTextView02 = (AutoTextView) view.findViewById(R.id.switcher02);
+                refreshView.getLoadingLayoutProxy().setLastUpdatedLabel(label);
+                IS_REFRESH = true;
+                pageIndex = 1;
+                initData();
+            }
+
+            @Override
+            public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
+                String label = DateUtils.formatDateTime(getActivity(), System.currentTimeMillis(),
+                        DateUtils.FORMAT_SHOW_TIME | DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_ABBREV_ALL);
+
+                refreshView.getLoadingLayoutProxy().setLastUpdatedLabel(label);
+                IS_REFRESH = false;
+                pageIndex++;
+                initData();
+            }
+        });
+        lstv.setAdapter(adapter);
+        lstv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if(listCz.size()>(position-2)){
+                    CpObj cpObj = listCz.get(position-2);
+                    if(cpObj != null){
+                        Intent intent  = new Intent(getActivity(), DetailGoodsActivity.class);
+                        intent.putExtra("id", cpObj.getCloud_caoping_id());
+                        startActivity(intent);
+                    }
+                }
+            }
+        });
+        headLiner = View.inflate(getActivity(), R.layout.index_header, null);
+
+        txt_news_one = (TextView) headLiner.findViewById(R.id.txt_news_one);
+        txt_news_two = (TextView) headLiner.findViewById(R.id.txt_news_two);
+        headLiner.findViewById(R.id.btn_one).setOnClickListener(this);
+        headLiner.findViewById(R.id.btn_two).setOnClickListener(this);
+        headLiner.findViewById(R.id.btn_three).setOnClickListener(this);
+        headLiner.findViewById(R.id.btn_four).setOnClickListener(this);
+        headLiner.findViewById(R.id.btn_more1).setOnClickListener(this);
+        headLiner.findViewById(R.id.btn_more2).setOnClickListener(this);
+        headLiner.findViewById(R.id.liner_one).setOnClickListener(this);
+        headLiner.findViewById(R.id.liner_two).setOnClickListener(this);
+        headLiner.findViewById(R.id.relate_news).setOnClickListener(this);//头条新闻
+
+        mTextView02 = (AutoTextView) headLiner.findViewById(R.id.switcher02);
         adapterAd = new IndexAdViewPagerAdapter(getActivity());
-        view.findViewById(R.id.btn_add).setOnClickListener(this);
+
+        pictureGridview = (PictureGridview) headLiner.findViewById(R.id.gridview);
+        pictureGridview.setSelector(new ColorDrawable(Color.TRANSPARENT));
+        adaptermq = new ItemMingqiAdapter1(listmq, getActivity());
+        pictureGridview.setAdapter(adaptermq);
+        pictureGridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //点击名企
+                if(listmq.size() > position){
+                    Company company= listmq.get(position);
+                    if(company != null){
+                        Intent intent  = new Intent(getActivity(), ProfileActivity.class);
+                        intent.putExtra("emp_id", company.getEmp_id());
+                        startActivity(intent);
+                    }
+                }
+            }
+        });
+        final ListView listView = lstv.getRefreshableView();
+        listView.addHeaderView(headLiner);
     }
 
-//    int selectC = 0;
-//    class MyTimer extends CountDownTimer {
-//
-//        public MyTimer(long millisInFuture, long countDownInterval) {
-//            super(millisInFuture, countDownInterval);
-//        }
-//
-//        @Override
-//        public void onFinish() {
-//        }
-//
-//        @Override
-//        public void onTick(long millisUntilFinished) {
-//            if(listNews!= null && listNews.size() > 0){
-//                if(listNews.size() > selectC){
-//                    mTextView02.setText(listNews.get(selectC).getCompany_name());
-//                    selectC ++;
-//                }else{
-//                    selectC = 0;
-//                    mTextView02.setText(listNews.get(selectC).getCompany_name());
-//                }
-//            }
-//
-//        }
-//    }
+    int selectC = 0;
+    class MyTimer extends CountDownTimer {
+
+        public MyTimer(long millisInFuture, long countDownInterval) {
+            super(millisInFuture, countDownInterval);
+        }
+
+        @Override
+        public void onFinish() {
+        }
+
+        @Override
+        public void onTick(long millisUntilFinished) {
+            if(listNews!= null && listNews.size() > 0){
+                if(listNews.size() > selectC){
+                    mTextView02.setText(listNews.get(selectC).getCompany_name());
+                    selectC ++;
+                }else{
+                    selectC = 0;
+                    mTextView02.setText(listNews.get(selectC).getCompany_name());
+                }
+            }
+
+        }
+    }
 
 
     @Override
@@ -179,7 +244,6 @@ public class IndexFragment extends BaseFragment implements View.OnClickListener,
                 startActivity(intent);
             }
                 break;
-            case R.id.right_img:
             case R.id.btn_one:
             {
                 //热销产品--就是推荐
@@ -189,38 +253,19 @@ public class IndexFragment extends BaseFragment implements View.OnClickListener,
                 break;
             case R.id.btn_two:
             {
-                //订单数据
-//                Intent intent = new Intent(getActivity(), StatisticalActivity.class);
-//                startActivity(intent);
-                Intent intent = new Intent(getActivity(), ListCaoyuanActivity.class);
-                intent.putExtra("tmpNearby", "0");
-                startActivity(intent);
-            }
-            break;
-            case R.id.btn_three:
-            {
+                //附近基地
                 //附近草坪
                 Intent intent = new Intent(getActivity(), ListCaoyuanActivity.class);
                 intent.putExtra("tmpNearby", "1");
                 startActivity(intent);
+//                Intent intent = new Intent(getActivity(), StatisticalActivity.class);
+//                startActivity(intent);
+//                Intent intent = new Intent(getActivity(), ListCaoyuanActivity.class);
+//                intent.putExtra("tmpNearby", "0");
+//                startActivity(intent);
             }
             break;
-            case R.id.btn_five:
-            case R.id.btn_mqfc:
-            {
-                //名企排行
-                Intent intent = new Intent(getActivity(), ListMingqiActivity.class);
-                startActivity(intent);
-            }
-                break;
-            case R.id.btn_wldt:
-            {
-                //物流信息
-                Intent intent = new Intent(getActivity(), ListWuliuActivity.class);
-                startActivity(intent);
-            }
-                break;
-            case R.id.btn_xstj:
+            case R.id.btn_three:
             {
                 //草原机械
                 Intent intent = new Intent(getActivity(), ListJixieActivity.class);
@@ -229,7 +274,51 @@ public class IndexFragment extends BaseFragment implements View.OnClickListener,
                 startActivity(intent);
             }
             break;
-            case R.id.btn_czgy:
+            case R.id.btn_four:
+            {
+                //物流信息
+                Intent intent = new Intent(getActivity(), ListWuliuActivity.class);
+                startActivity(intent);
+            }
+                break;
+//            case R.id.btn_wldt:
+//            {
+//                //物流信息
+//                Intent intent = new Intent(getActivity(), ListWuliuActivity.class);
+//                startActivity(intent);
+//            }
+//                break;
+//            case R.id.btn_xstj:
+//            {
+//                //草原机械
+//                Intent intent = new Intent(getActivity(), ListJixieActivity.class);
+//                intent.putExtra("cloud_jixie_use_id", "");
+//                intent.putExtra("tmpNearby", "0");
+//                startActivity(intent);
+//            }
+//            break;
+//            case R.id.btn_czgy:
+//            {
+//                //草种供应
+//                Intent intent = new Intent(getActivity(), ListCaozhongActivity.class);
+//                intent.putExtra("tmpNearby", "0");
+//                startActivity(intent);
+//            }
+//            break;
+            case R.id.btn_add:
+            {
+                Intent intent = new Intent(getActivity(), MineCartActivity.class);
+                startActivity(intent);
+            }
+                break;
+            case R.id.btn_more1:
+            {
+                //名企风采
+                Intent intent = new Intent(getActivity(), ListMingqiActivity.class);
+                startActivity(intent);
+            }
+                break;
+            case R.id.btn_more2:
             {
                 //草种供应
                 Intent intent = new Intent(getActivity(), ListCaozhongActivity.class);
@@ -237,10 +326,14 @@ public class IndexFragment extends BaseFragment implements View.OnClickListener,
                 startActivity(intent);
             }
             break;
-            case R.id.btn_add:
+            case R.id.liner_one:
             {
-                Intent intent = new Intent(getActivity(), MineCartActivity.class);
-                startActivity(intent);
+                //加入草坪云的理由
+            }
+                break;
+            case R.id.liner_two:
+            {
+                //申请加入草坪云
             }
                 break;
         }
@@ -249,7 +342,7 @@ public class IndexFragment extends BaseFragment implements View.OnClickListener,
     private void initViewPager() {
         adapterAd.change(listsAd);
         adapterAd.setOnClickContentItemListener(this);
-        viewpager = (ViewPager) view.findViewById(R.id.viewpager);
+        viewpager = (ViewPager) headLiner.findViewById(R.id.viewpager);
         viewpager.setAdapter(adapterAd);
         viewpager.setOnPageChangeListener(myOnPageChangeListener);
         initDot();
@@ -269,7 +362,7 @@ public class IndexFragment extends BaseFragment implements View.OnClickListener,
 
     // 初始化dot视图
     private void initDot() {
-        viewGroup = (LinearLayout) view.findViewById(R.id.viewGroup);
+        viewGroup = (LinearLayout) headLiner.findViewById(R.id.viewGroup);
 
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
                 20, 20);
@@ -446,65 +539,65 @@ public class IndexFragment extends BaseFragment implements View.OnClickListener,
 
     private List<Company> listNews = new ArrayList<Company>();
     //获取最新的二十条入驻企业信息学
-//    private void getNewsCompanys() {
-//        StringRequest request = new StringRequest(
-//                Request.Method.POST,
-//                InternetURL.appGetCompanyNews,
-//                new Response.Listener<String>() {
-//                    @Override
-//                    public void onResponse(String s) {
-//                        if (StringUtil.isJson(s)) {
-//                            CompanyData data = getGson().fromJson(s, CompanyData.class);
-//                            if (data.getCode() == 200) {
-//                                listNews.clear();
-//                                listNews.addAll(data.getData());
-//                                if(listNews != null && listNews.size()>0){
-//                                    new Thread(new Runnable() {
-//                                        @Override
-//                                        public void run() {
-//                                            MyTimer myTimer = new MyTimer(6000000, 3000);
-//                                            myTimer.start();
-//                                        }
-//                                    }).run();
-//                                }
-//                            } else {
-//                                Toast.makeText(getActivity(), R.string.get_data_error, Toast.LENGTH_SHORT).show();
-//                            }
-//                        } else {
-//                            Toast.makeText(getActivity(), R.string.get_data_error, Toast.LENGTH_SHORT).show();
-//                        }
-//                        if(progressDialog != null){
-//                            progressDialog.dismiss();
-//                        }
-//                    }
-//                },
-//                new Response.ErrorListener() {
-//                    @Override
-//                    public void onErrorResponse(VolleyError volleyError) {
-//                        if(progressDialog != null){
-//                            progressDialog.dismiss();
-//                        }
-//                        Toast.makeText(getActivity(), R.string.get_data_error, Toast.LENGTH_SHORT).show();
-//                    }
-//                }
-//        ) {
-//            @Override
-//            protected Map<String, String> getParams() throws AuthFailureError {
-//                Map<String, String> params = new HashMap<String, String>();
-//                params.put("page", "1");
-//                params.put("size", "20");
-//                return params;
-//            }
-//
-//            @Override
-//            public Map<String, String> getHeaders() throws AuthFailureError {
-//                Map<String, String> params = new HashMap<String, String>();
-//                params.put("Content-Type", "application/x-www-form-urlencoded");
-//                return params;
-//            }
-//        };
-//        getRequestQueue().add(request);
-//    }
+    private void getNewsCompanys() {
+        StringRequest request = new StringRequest(
+                Request.Method.POST,
+                InternetURL.appGetCompanyNews,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String s) {
+                        if (StringUtil.isJson(s)) {
+                            CompanyData data = getGson().fromJson(s, CompanyData.class);
+                            if (data.getCode() == 200) {
+                                listNews.clear();
+                                listNews.addAll(data.getData());
+                                if(listNews != null && listNews.size()>0){
+                                    new Thread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            MyTimer myTimer = new MyTimer(6000000, 3000);
+                                            myTimer.start();
+                                        }
+                                    }).run();
+                                }
+                            } else {
+                                Toast.makeText(getActivity(), R.string.get_data_error, Toast.LENGTH_SHORT).show();
+                            }
+                        } else {
+                            Toast.makeText(getActivity(), R.string.get_data_error, Toast.LENGTH_SHORT).show();
+                        }
+                        if(progressDialog != null){
+                            progressDialog.dismiss();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError volleyError) {
+                        if(progressDialog != null){
+                            progressDialog.dismiss();
+                        }
+                        Toast.makeText(getActivity(), R.string.get_data_error, Toast.LENGTH_SHORT).show();
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("page", "1");
+                params.put("size", "20");
+                return params;
+            }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("Content-Type", "application/x-www-form-urlencoded");
+                return params;
+            }
+        };
+        getRequestQueue().add(request);
+    }
 
 
     //广播接收动作
@@ -619,4 +712,116 @@ public class IndexFragment extends BaseFragment implements View.OnClickListener,
         getRequestQueue().add(request);
     }
 
+    private void initData() {
+        StringRequest request = new StringRequest(
+                Request.Method.POST,
+                InternetURL.GET_CP_LIST_URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String s) {
+                        if (StringUtil.isJson(s)) {
+                            try {
+                                JSONObject jo =  new JSONObject(s);
+                                String code = jo.getString("code");
+                                if (code.equals("200")) {
+                                    CpObjData data = getGson().fromJson(s, CpObjData.class);
+                                    if (IS_REFRESH) {
+                                        listCz.clear();
+                                    }
+                                    listCz.addAll(data.getData());
+                                    lstv.onRefreshComplete();
+                                    adapter.notifyDataSetChanged();
+                                }else{
+                                    Toast.makeText(getActivity(), jo.getString("message"), Toast.LENGTH_SHORT).show();
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        } else {
+                            Toast.makeText(getActivity(), R.string.get_data_error, Toast.LENGTH_SHORT).show();
+                        }
+                        if(progressDialog != null){
+                            progressDialog.dismiss();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError volleyError) {
+                        if(progressDialog != null){
+                            progressDialog.dismiss();
+                        }
+                        Toast.makeText(getActivity(), R.string.get_data_error, Toast.LENGTH_SHORT).show();
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("page", String.valueOf(pageIndex));
+                params.put("cloud_is_use", "0");
+                params.put("cloud_is_del", "0");
+                params.put("cloud_caozhong_type_id", "");
+                params.put("cloud_caozhong_guige_id", "");
+                params.put("is_type", "1");
+                params.put("is_count", "1");
+                return params;
+            }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("Content-Type", "application/x-www-form-urlencoded");
+                return params;
+            }
+        };
+        getRequestQueue().add(request);
+    }
+
+    private void getmq() {
+        StringRequest request = new StringRequest(
+                Request.Method.POST,
+                InternetURL.GET_COMPANY_MQ_URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String s) {
+                        if (StringUtil.isJson(s)) {
+                            CompanyData data = getGson().fromJson(s, CompanyData.class);
+                            if (data.getCode() == 200) {
+                                listmq.clear();
+                                listmq.addAll(data.getData());
+                                adaptermq.notifyDataSetChanged();
+                            }
+                        } else {
+                        }
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError volleyError) {
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("page", String.valueOf(1));
+                params.put("size", "3");
+                params.put("provinceid", "");
+                params.put("cityid", "");
+                params.put("areaid", "");
+                params.put("is_count", "1");
+                return params;
+            }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("Content-Type", "application/x-www-form-urlencoded");
+                return params;
+            }
+        };
+        getRequestQueue().add(request);
+    }
 }

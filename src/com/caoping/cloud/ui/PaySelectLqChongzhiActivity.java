@@ -185,6 +185,11 @@ public class PaySelectLqChongzhiActivity extends BaseActivity implements View.On
                 listOrders.add(new Order("", getGson().fromJson(getSp().getString("empId", ""), String.class), ""
                         ,"", "0", jine
                         ,"0","0","","","","","","","","1",jine ,"0", "1","APP(安卓端)零钱充值"));
+
+//                Order(String cloud_caoping_id, String emp_id, String seller_emp_id, String address_id, String goods_count, String payable_amount,
+//                        String distribution_type, String distribution_status, String postscript, String invoice, String invoice_title, String taxes,
+//                        String provinceId, String cityId, String areaId, String trade_type, String payable_amount_all, String pv_amount, String is_dxk_order, String order_cont)
+
                 SGform.setList(listOrders);
                 if(listOrders!=null && listOrders.size() > 0){
                     //传值给服务端

@@ -31,7 +31,7 @@
                 android:layout_height="match_parent"
                 android:cacheColorHint="#00000000"
                 android:divider="#19000000"
-                android:dividerHeight="0.5dp"
+                android:dividerHeight="8dp"
                 android:fadingEdge="none"
                 android:fastScrollEnabled="false"
                 android:footerDividersEnabled="false"

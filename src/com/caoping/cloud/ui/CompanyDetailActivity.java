@@ -841,7 +841,8 @@ public class CompanyDetailActivity extends BaseActivity implements View.OnClickL
                 null);
     }
 
-    void sendCover(final String coverStr){
+    void
+    sendCover(final String coverStr){
         StringRequest request = new StringRequest(
                 Request.Method.POST,
                 InternetURL.UPDATE_COMPANY_DETAIL_PIC_URL,

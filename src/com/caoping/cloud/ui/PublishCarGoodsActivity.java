@@ -87,7 +87,6 @@ public class PublishCarGoodsActivity extends BaseActivity implements View.OnClic
     private String countryCode = "";
 
     private EditText start_time;
-    private EditText end_time;
 
     private EditText detail;
     private EditText person;
@@ -126,14 +125,12 @@ public class PublishCarGoodsActivity extends BaseActivity implements View.OnClic
 
     private void initView() {
         start_time = (EditText) this.findViewById(R.id.start_time);
-        end_time = (EditText) this.findViewById(R.id.end_time);
 
         detail = (EditText) this.findViewById(R.id.detail);
         person = (EditText) this.findViewById(R.id.person);
         tel = (EditText) this.findViewById(R.id.tel);
 
         start_time.setText(initStartDateTime);
-        end_time.setText(initEndDateTime);
 
         start_time.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -142,15 +139,6 @@ public class PublishCarGoodsActivity extends BaseActivity implements View.OnClic
                         PublishCarGoodsActivity.this, initEndDateTime);
                 dateTimePicKDialog.dateTimePicKDialog(start_time);
 
-            }
-        });
-
-        end_time.setOnClickListener(new View.OnClickListener() {
-
-            public void onClick(View v) {
-                DateTimePickDialogUtil dateTimePicKDialog = new DateTimePickDialogUtil(
-                        PublishCarGoodsActivity.this, initEndDateTime);
-                dateTimePicKDialog.dateTimePicKDialog(end_time);
             }
         });
 
@@ -740,11 +728,6 @@ public class PublishCarGoodsActivity extends BaseActivity implements View.OnClic
                     showMsg(PublishCarGoodsActivity.this, "请选择开始时间！");
                     return;
                 }
-                if(StringUtil.isNullOrEmpty(end_time.getText().toString())){
-                    showMsg(PublishCarGoodsActivity.this, "请选择截止时间！");
-                    return;
-                }
-
 
                 if(detail.getText().toString().length() > 1000){
                     showMsg(PublishCarGoodsActivity.this, "内容超出字段限制，1000字以内！");
@@ -845,7 +828,7 @@ public class PublishCarGoodsActivity extends BaseActivity implements View.OnClic
                 params.put("end_cityid", cityCode1);
                 params.put("end_areaid", countryCode1);
                 params.put("start_time", start_time.getText().toString());
-                params.put("end_time", end_time.getText().toString());
+                params.put("end_time", "");
                 if(!StringUtil.isNullOrEmpty( detail.getText().toString())){
                     params.put("detail", detail.getText().toString());
                 }

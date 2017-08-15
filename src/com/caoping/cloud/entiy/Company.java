@@ -34,6 +34,24 @@ public class Company {
     private String cityName;//市
     private String areaName;//县
 
+    private String is_shiming_rz;
+    private String is_qiye_rz;
+
+    public String getIs_shiming_rz() {
+        return is_shiming_rz;
+    }
+
+    public void setIs_shiming_rz(String is_shiming_rz) {
+        this.is_shiming_rz = is_shiming_rz;
+    }
+
+    public String getIs_qiye_rz() {
+        return is_qiye_rz;
+    }
+
+    public void setIs_qiye_rz(String is_qiye_rz) {
+        this.is_qiye_rz = is_qiye_rz;
+    }
 
     public String getIs_paihang() {
         return is_paihang;

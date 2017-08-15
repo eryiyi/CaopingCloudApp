@@ -32,8 +32,8 @@ public class ListWuliuActivity extends BaseActivity implements View.OnClickListe
     private TextView foot_one_text;
     private TextView foot_two_text;
 
-//    private ImageView foot_one;
-//    private ImageView foot_two;
+    private ImageView foot_one;
+    private ImageView foot_two;
     Resources res;
 
     @Override
@@ -51,8 +51,8 @@ public class ListWuliuActivity extends BaseActivity implements View.OnClickListe
         right_img = (ImageView) this.findViewById(R.id.right_img);
         right_img.setOnClickListener(this);
 
-//        foot_one = (ImageView) this.findViewById(R.id.foot_one);
-//        foot_two = (ImageView) this.findViewById(R.id.foot_two);
+        foot_one = (ImageView) this.findViewById(R.id.foot_one);
+        foot_two = (ImageView) this.findViewById(R.id.foot_two);
         this.findViewById(R.id.foot_liner_one).setOnClickListener(this);
         this.findViewById(R.id.foot_liner_two).setOnClickListener(this);
 
@@ -75,29 +75,31 @@ public class ListWuliuActivity extends BaseActivity implements View.OnClickListe
             hideFragments(fragmentTransaction);
             switch (id) {
                 case R.id.foot_liner_one:
-                    if (oneFragment == null) {
-                        oneFragment = new WuliuOneFragment();
-                        fragmentTransaction.add(R.id.content_frame, oneFragment);
-                    } else {
-                        fragmentTransaction.show(oneFragment);
-                    }
-//                    foot_one.setImageResource(R.drawable.nav_home);
-//                    foot_two.setImageResource(R.drawable.nav_shop);
-
-                    foot_one_text.setTextColor(res.getColor(R.color.green));
-                    foot_two_text.setTextColor(res.getColor(R.color.text_color));
-                    break;
-                case R.id.foot_liner_two:
                     if (twoFragment == null) {
                         twoFragment = new WuliuTwoFragment();
                         fragmentTransaction.add(R.id.content_frame, twoFragment);
                     } else {
                         fragmentTransaction.show(twoFragment);
                     }
-//                    foot_one.setImageResource(R.drawable.nav_home_p);
-//                    foot_two.setImageResource(R.drawable.nav_shop_p);
+                    foot_one.setImageResource(R.drawable.icon_car_p);
+                    foot_two.setImageResource(R.drawable.icon_huo_n);
+
+                    foot_one_text.setTextColor(res.getColor(R.color.green));
+                    foot_two_text.setTextColor(res.getColor(R.color.text_color));
+                    break;
+                case R.id.foot_liner_two:
+                    if (oneFragment == null) {
+                        oneFragment = new WuliuOneFragment();
+                        fragmentTransaction.add(R.id.content_frame, oneFragment);
+                    } else {
+                        fragmentTransaction.show(oneFragment);
+                    }
+                    foot_one.setImageResource(R.drawable.icon_car_n);
+                    foot_two.setImageResource(R.drawable.icon_huo_p);
+
                     foot_one_text.setTextColor(res.getColor(R.color.text_color));
                     foot_two_text.setTextColor(res.getColor(R.color.green));
+
                     break;
             }
             fragmentTransaction.commit();

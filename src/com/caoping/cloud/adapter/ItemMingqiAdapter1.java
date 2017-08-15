@@ -6,10 +6,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
+import com.caoping.cloud.CaopingCloudApplication;
 import com.caoping.cloud.R;
-import com.caoping.cloud.entiy.LxConsumption;
-import com.caoping.cloud.util.DateUtil;
+import com.caoping.cloud.entiy.Company;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
@@ -17,11 +18,11 @@ import java.util.List;
 
 /**
  * Created by Administrator on 2015/5/27.
- * 我的消费记录
+ * 名企排行
  */
-public class ItemConsumptionAdapter extends BaseAdapter {
+public class ItemMingqiAdapter1 extends BaseAdapter {
     private ViewHolder holder;
-    private List<LxConsumption> lists;
+    private List<Company> lists;
     private Context mContect;
     Resources res;
 
@@ -35,7 +36,7 @@ public class ItemConsumptionAdapter extends BaseAdapter {
     }
 
 
-    public ItemConsumptionAdapter(List<LxConsumption> lists, Context mContect) {
+    public ItemMingqiAdapter1(List<Company> lists, Context mContect) {
         this.lists = lists;
         this.mContect = mContect;
     }
@@ -60,27 +61,34 @@ public class ItemConsumptionAdapter extends BaseAdapter {
         res = mContect.getResources();
         if (convertView == null) {
             holder = new ViewHolder();
-            convertView = LayoutInflater.from(mContect).inflate(R.layout.item_onsumption, null);
-            holder.content = (TextView) convertView.findViewById(R.id.content);
+            convertView = LayoutInflater.from(mContect).inflate(R.layout.item_mingqi1, null);
+            holder.cover = (ImageView) convertView.findViewById(R.id.cover);
+            holder.name = (TextView) convertView.findViewById(R.id.name);
+            holder.title = (TextView) convertView.findViewById(R.id.title);
+            holder.company = (TextView) convertView.findViewById(R.id.company);
             holder.count = (TextView) convertView.findViewById(R.id.count);
-            holder.dateline = (TextView) convertView.findViewById(R.id.dateline);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        LxConsumption cell = lists.get(position);
+        Company cell = lists.get(position);
         if (cell != null) {
-            holder.content.setText(cell.getLx_consumption_cont()==null?"":cell.getLx_consumption_cont());
-            holder.count.setText("金额:"+(cell.getLx_consumption_count()==null?"":cell.getLx_consumption_count()));
-            holder.dateline.setText("时间"+cell.getDateline() == null ? "" : cell.getDateline());
+            imageLoader.displayImage(cell.getCompany_pic(), holder.cover, CaopingCloudApplication.options, animateFirstListener);
+            holder.name.setText(cell.getPname() + "·" + cell.getCityName());
+            holder.title.setText(String.valueOf(position + 1));
+            holder.company.setText(cell.getCompany_name());
+            holder.count.setText("电话:"+cell.getCompany_tel());
         }
 
+        holder.title.setText(String.valueOf(position+1));
         return convertView;
     }
 
     class ViewHolder {
-        TextView content;
+        ImageView cover;
+        TextView title;
+        TextView name;
+        TextView company;
         TextView count;
-        TextView dateline;
     }
 }

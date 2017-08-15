@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 import com.caoping.cloud.R;
 import com.caoping.cloud.entiy.Transport;
@@ -63,26 +64,22 @@ public class ItemWuliuCarAdapter extends BaseAdapter {
             holder.address_one = (TextView) convertView.findViewById(R.id.address_one);
             holder.address_two = (TextView) convertView.findViewById(R.id.address_two);
             holder.startTime = (TextView) convertView.findViewById(R.id.startTime);
-            holder.endTime = (TextView) convertView.findViewById(R.id.endTime);
-            holder.name = (TextView) convertView.findViewById(R.id.name);
-            holder.mobile = (TextView) convertView.findViewById(R.id.mobile);
             holder.content = (TextView) convertView.findViewById(R.id.content);
-            holder.btn_tel = (TextView) convertView.findViewById(R.id.btn_tel);
-            holder.btn_im = (TextView) convertView.findViewById(R.id.btn_im);
+            holder.dateline = (TextView) convertView.findViewById(R.id.dateline);
+            holder.btn_tel = (ImageView) convertView.findViewById(R.id.btn_tel);
+            holder.btn_im = (ImageView) convertView.findViewById(R.id.btn_im);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
         Transport cell = lists.get(position);
         if(cell != null){
-            holder.address_one.setText(cell.getStart_pname()+cell.getStart_cityName()+cell.getStart_areaName());
-            holder.address_two.setText(cell.getEnd_pname()+cell.getEnd_cityName()+cell.getEnd_areaName());
+            holder.address_one.setText(cell.getStart_cityName()+cell.getStart_areaName());
+            holder.address_two.setText(cell.getEnd_cityName()+cell.getEnd_areaName());
 
             holder.startTime.setText(cell.getStart_time());
-            holder.endTime.setText(cell.getEnd_time());
-            holder.name.setText(cell.getPerson());
-            holder.mobile.setText(cell.getTel());
-            holder.content.setText(cell.getDetail()==null?"":cell.getDetail());
+            holder.dateline.setText(cell.getDateline());
+            holder.content.setText((cell.getCar_type_name()==null?"":cell.getCar_type_name())+" 车长"+(cell.getCar_length_name()==null?"":cell.getCar_length_name())+"米 " + (cell.getDetail()==null?"":cell.getDetail()));
         }
         if (cell != null) {
             holder.btn_tel.setOnClickListener(new View.OnClickListener() {
@@ -105,12 +102,10 @@ public class ItemWuliuCarAdapter extends BaseAdapter {
         TextView address_one;
         TextView address_two;
         TextView startTime;
-        TextView endTime;
-        TextView name;
-        TextView mobile;
         TextView content;
-        TextView btn_tel;
-        TextView btn_im;
+        TextView dateline;
+        ImageView btn_tel;
+        ImageView btn_im;
 
     }
 }

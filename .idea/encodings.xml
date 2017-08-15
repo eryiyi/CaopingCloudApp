@@ -833,7 +833,13 @@
     <file url="file://$PROJECT_DIR$/res/drawable-xhdpi/ic_common_check.png" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/res/drawable-xhdpi/ic_loading.png" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/res/drawable-xhdpi/ic_topbar_save.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/res/drawable-xhdpi/icon_cpjx.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/res/drawable-xhdpi/icon_fjjd.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/res/drawable-xhdpi/icon_fujin.png" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/res/drawable-xhdpi/icon_geo.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/res/drawable-xhdpi/icon_green.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/res/drawable-xhdpi/icon_guanfang.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/res/drawable-xhdpi/icon_hangye.png" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/res/drawable-xhdpi/icon_home_play.png" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/res/drawable-xhdpi/icon_list_fastscroll_selected_bg.png" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/res/drawable-xhdpi/icon_little_f_chat.png" charset="UTF-8" />
@@ -855,11 +861,16 @@
     <file url="file://$PROJECT_DIR$/res/drawable-xhdpi/icon_location_mineself.png" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/res/drawable-xhdpi/icon_mute_normal.png" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/res/drawable-xhdpi/icon_mute_on.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/res/drawable-xhdpi/icon_orange.png" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/res/drawable-xhdpi/icon_paopao_chat_group.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/res/drawable-xhdpi/icon_rxcp.png" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/res/drawable-xhdpi/icon_sex_female.png" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/res/drawable-xhdpi/icon_sex_male.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/res/drawable-xhdpi/icon_small.png" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/res/drawable-xhdpi/icon_talk.png" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/res/drawable-xhdpi/icon_update_point.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/res/drawable-xhdpi/icon_wldt.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/res/drawable-xhdpi/icon_woshou.png" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/res/drawable-xhdpi/icons_others_addpic.png" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/res/drawable-xhdpi/icons_others_face.png" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/res/drawable-xhdpi/icons_others_menu.png" charset="UTF-8" />
@@ -1090,6 +1101,9 @@
     <file url="file://$PROJECT_DIR$/res/drawable-xhdpi/voicechange_luodi.png" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/res/drawable-xhdpi/voicechange_normal.png" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/res/drawable-xxhdpi" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/res/drawable-xxhdpi/icon_chezhu.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/res/drawable-xxhdpi/icon_huozhu.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/res/drawable-xxhdpi/icon_zixun.png" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/res/drawable/analyze_empty_bg.9.png" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/res/drawable/bg_pop_item.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/res/drawable/bg_pop_pressed.9.png" charset="UTF-8" />
@@ -1099,6 +1113,7 @@
     <file url="file://$PROJECT_DIR$/res/drawable/btn_dark_shape.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/res/drawable/btn_gray_normal_shape.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/res/drawable/btn_gray_press_shape.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/res/drawable/btn_gray_radio_press_shape.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/res/drawable/btn_gray_shape.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/res/drawable/btn_green_normal_shape.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/res/drawable/btn_green_press_shape.xml" charset="UTF-8" />
@@ -1621,6 +1636,7 @@
     <file url="file://$PROJECT_DIR$/res/layout/item_index_layout.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/res/layout/item_main_viewpage_xml.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/res/layout/item_mine_order_adapter.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/res/layout/item_mingqi1.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/res/layout/item_province.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/res/layout/item_select_address_adapter.xml" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/res/layout/list_position.xml" charset="UTF-8" />
@@ -1816,6 +1832,7 @@
     <file url="file://$PROJECT_DIR$/src/com/caoping/cloud/adapter/ItemMineOrderAdapter.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/com/caoping/cloud/adapter/ItemMineProductAdapter.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/com/caoping/cloud/adapter/ItemMingqiAdapter.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/com/caoping/cloud/adapter/ItemMingqiAdapter1.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/com/caoping/cloud/adapter/ItemProfileBtnAdapter.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/com/caoping/cloud/adapter/ItemProfileCaoyuanAdapter.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/com/caoping/cloud/adapter/ItemProfileToutiaoAdapter.java" charset="UTF-8" />

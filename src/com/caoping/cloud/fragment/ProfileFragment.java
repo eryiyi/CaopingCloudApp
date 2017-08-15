@@ -256,7 +256,6 @@ public class ProfileFragment extends BaseFragment  implements View.OnClickListen
             case R.id.btn_caoyuan:
             {
                 //发布记录
-//
                 Intent intent = new Intent(getActivity(), ListMineProductActivity.class);
                 intent.putExtra("is_type", "0");
                 startActivity(intent);

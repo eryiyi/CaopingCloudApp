@@ -130,7 +130,7 @@
                 </com.caoping.cloud.widget.CustomerSpinner>
             </LinearLayout>
             <TextView android:layout_width="match_parent"
-                      android:text="发车起止时间"
+                      android:text="发车时间"
                       android:padding="8dp"
                       android:layout_marginLeft="8dp"
                       android:drawableLeft="@drawable/star"
@@ -152,19 +152,19 @@
                           android:id="@+id/start_time"
                           android:background="#f6f6f6"
                           android:layout_height="wrap_content"/>
-                <EditText android:layout_width="match_parent"
-                          android:textColor="@color/text_color"
-                          android:padding="12dp"
-                          android:drawableRight="@drawable/caret"
-                          android:focusable="false"
-                          android:drawableLeft="@drawable/canlendar"
-                          android:layout_marginLeft="8dp"
-                          android:layout_marginRight="8dp"
-                          android:layout_marginTop="3dp"
-                          android:inputType="none"
-                          android:id="@+id/end_time"
-                          android:background="#f6f6f6"
-                          android:layout_height="wrap_content"/>
+                <!--<EditText android:layout_width="match_parent"-->
+                          <!--android:textColor="@color/text_color"-->
+                          <!--android:padding="12dp"-->
+                          <!--android:drawableRight="@drawable/caret"-->
+                          <!--android:focusable="false"-->
+                          <!--android:drawableLeft="@drawable/canlendar"-->
+                          <!--android:layout_marginLeft="8dp"-->
+                          <!--android:layout_marginRight="8dp"-->
+                          <!--android:layout_marginTop="3dp"-->
+                          <!--android:inputType="none"-->
+                          <!--android:id="@+id/end_time"-->
+                          <!--android:background="#f6f6f6"-->
+                          <!--android:layout_height="wrap_content"/>-->
             </LinearLayout>
             <TextView android:layout_width="match_parent"
                       android:text="车辆信息"

@@ -12,13 +12,11 @@ public class InternetURL {
     public static final String WEIXIN_SECRET = "85977cd5719d1aebb5dd6ccaa4fe5bff";
     public static final String WX_API_KEY = "85977cd5719d1aebb5dd6ccaa4fe5bfe";
 
-        public static final String INTERNAL = "http://139.196.169.8:8080/";
-//        public static final String INTERNAL = "http://192.168.0.225:8080/";
+    public static final String INTERNAL = "http://139.196.169.8:8080/";
+//    public static final String INTERNAL = "http://192.168.0.225:8080/";
+
     //多媒体文件上传接口
     public static final String UPLOAD_FILE = INTERNAL + "uploadImage.do";
-    //多媒体文件上传接口
-//    public static final String UPLOAD_TOKEN = INTERNAL + "token.json";
-//    public static final String QINIU_SPACE = "paopao-pic";
     //登录
     public static final String LOGIN__URL = INTERNAL + "memberLogin.do";
     //注册第一步
@@ -35,8 +33,6 @@ public class InternetURL {
     public static final String UPDATE_INFO_SEX_URL = INTERNAL + "modifyMemberSex.do";
     //更新生日
     public static final String UPDATE_INFO_BIRTH_URL = INTERNAL + "modifyMemberBirth.do";
-    // 跟新手机号
-    public static final String UPDATE_INFO_MOBILE_URL = INTERNAL + "resetMobile.do";
     //更新支付密码
     public static final String UPDATE_INFO_PAY_PASS_URL = INTERNAL + "modifyMemberPayPass.do";
 
@@ -56,29 +52,11 @@ public class InternetURL {
     public static final String SELECT_AREA_ADDRESS = INTERNAL + "appGetArea.do";
     //上传经纬度
     public static final String SEND_LOCATION_BYID_URL = INTERNAL + "sendLocation.do";
-    //申请入驻
-    public static final String EMP_APPLY_DIANPU_URL = INTERNAL + "saveManagerInfo.do";
 
-    //获得商品分类
-    public static final String GET_GOODS_TYPE_URL = INTERNAL + "appGetGoodsType.do";
-
-    //获得附近首页商店列表
-    public static final String GET_DIANPU_LISTS = INTERNAL + "appGetNearbyDianpu.do";
     //获得推荐产品
     public static final String GET_TUIJIAN_LISTS = INTERNAL + "getTuijianProduct.do";
-    //查询店铺详情
-    public static final String GET_DIPU_DETAIL_LISTS = INTERNAL + "appGetDianpuDetailByEmpId.do";
-    //查询店铺广告轮播图
-    public static final String GET_DIPU_ADS_LISTS = INTERNAL + "appGetAdEmp.do";
-    //查询商品详情
-    public static final String GET_GODS_DETAIL_LISTS = INTERNAL + "paopaogoods/findById.do";
-    //查询商品评论
-    public static final String GET_GOODS_COMMENT_LISTS = INTERNAL + "listGoodsComment.do";
     //广告轮播
     public static final String GET_AD_LIST_TYPE_LISTS = INTERNAL + "appGetAdByType.do";
-    //获取商品列表
-    public static final String GET_GOODS_URL = INTERNAL + "paopaogoods/listGoods.do";
-
 
     //传订单给服务端--生成订单
     public static final String SEND_ORDER_TOSERVER = INTERNAL + "orderSave.do";
@@ -126,15 +104,11 @@ public class InternetURL {
     //百度推送 绑定 get方法
     public static final String UPDATE_PUSH_ID = INTERNAL + "updatePushId.do";
 
-    //查询我的浏览记录
-    public static final String GET_BROWSING_ID = INTERNAL + "appGetBrowsing.do";
     //微信支付
     public static final String SEND_ORDER_TOSERVER_WX = INTERNAL + "orderSaveWx.do";
 
     //添加商品评论
     public static final String PUBLISH_GOODS_COMMNENT_URL = INTERNAL + "saveGoodsComment.do";
-    //获得客户电话列表
-    public static final String GET_KEFU_TEL_URL = INTERNAL + "getKefuTel.do";
 
     //推广注册
     public static final String APP_SHARE_REG_URL = INTERNAL + "appShareReg.do";
@@ -148,9 +122,6 @@ public class InternetURL {
     //查询我的點評
     public static final String GET_MINE_GOODS_COMMENT_LISTS = INTERNAL + "listGoodsComment.do";
 
-    //更新订单--退货
-    public static final String UPDATE_ORDER_RETURN = INTERNAL + "updateOrder.do";
-
     //获得会员的消费记录 ，钱包-》我的金币，点击查看消费详情
     public static final String GET_CONSUMPTION_RETURN = INTERNAL + "appGetConsumption.do";
     //我的积分记录
@@ -160,16 +131,6 @@ public class InternetURL {
 
     //提交提现申请
     public static final String SAVE_BANK_APPLY_RETURN = INTERNAL + "appSaveBankApply.do";
-    //猜你喜欢的
-    public static final String GET_LIKES_URN = INTERNAL + "appGetLikes.do";
-    //获得定向卡会员详情
-    public static final String GET_CARD_EMP_BY_ID_URN = INTERNAL + "appGetCardEmp.do";
-    //商家有偿消费二维码url
-    public static final String GET_GET_GOODS_URN = INTERNAL + "appPayYouchang.do";
-    public static final String GET_GET_DXK_GOODS_URN = INTERNAL + "appPayWuchang.do";
-    //商家无偿消费二维码url
-    public static final String SAVE_DXK_ORDER_URN = INTERNAL + "appSaveDxkOrder.do";
-
 
     //获得头条列表
     public static final String GET_NEWS_URL = INTERNAL + "appGetNews.do";
@@ -187,15 +148,9 @@ public class InternetURL {
     public static final String GET_NEWS_COMMENT = INTERNAL + "appGetNewsComment.do";
     //保存头条信息评论
     public static final String SAVE_NEWS_COMMENT = INTERNAL + "appSaveNewsComment.do";
-    //删除头条信息评论
-    public static final String DELETE_NEWS_COMMENT = INTERNAL + "appDeleteNewsComment.do";
 
-    //获取头条赞列表
-    public static final String GET_NEWS_FAVOUR_LIST = INTERNAL + "appGetNewsFavour.do";
     //保存头条赞
     public static final String SAVE_NEWS_FAVOUR_URL = INTERNAL + "appSaveNewsFavour.do";
-    //删除头条赞
-    public static final String DELETE_NEWS_FAVOUR_URL = INTERNAL + "appDeleteNewsFavour.do";
 
     //获得草坪规格
     public static final String GET_CP_GUIGE_URL = INTERNAL + "appGetCpGuige.do";
@@ -225,9 +180,6 @@ public class InternetURL {
     public static final String GET_COUNTRY_URL = INTERNAL + "appGetArea.do";
     //获得名企|公司|草原（公司）列表
     public static final String GET_COMPANY_MQ_URL = INTERNAL + "appGetCompanyList.do";
-
-    //查询最新入驻企业
-    public static final String appGetCompanyNews = INTERNAL + "appGetCompanyNews.do";
 
     //机械
     //获取机械规格
@@ -262,19 +214,12 @@ public class InternetURL {
     //商品详情页
     public static final String TO_DETAIL_GOODS = INTERNAL + "toDetailCp.do";
 
-    //获得商品详情页好评度和消费评价总数
-    public static final String GET_COMMENT_ALL_URN = INTERNAL + "appGetCountComment.do";
-    //获得店铺详情页好评度和消费评价总数
-    public static final String GET_COMMENT_ALL_DIANPU_URN = INTERNAL + "appGetCountCommentDianpu.do";
-
     //零钱支付方式(购物车生成订单 付款  直接购买的时候)
     public static final String SEND_ORDER_TOSERVER_LQ = INTERNAL + "orderSaveLq.do";
     //零钱支付方式 -- 单个付款--（我的订单，没支付的订单，去付款的时候）
     public static final String SAVE_ORDER_SIGNLE_LQ =INTERNAL +  "orderSaveSingleLq.do";
     //订单评价之后 更新订单状态
     public static final String UPDATE_ORDER_COMMENT =INTERNAL +  "orderUpdateComment.do";
-    //查询店铺的评论列表
-    public static final String GET_DIANPU_COMMENT_LISTS = INTERNAL + "listGoodsComment.do";
     //充值零钱
     public static final String appLqPayWx = INTERNAL + "appLqPayWx.do";
     public static final String appLqPayZfb = INTERNAL + "appLqPayZfb.do";
@@ -289,15 +234,7 @@ public class InternetURL {
     //个人中心页面获得加入草坪云的天数 收入  消费额度等
     public static final String getProfileMemberInfo = INTERNAL + "getProfileMemberInfo.do";
 
+    //最新入驻企业
+    public static final String appGetCompanyNews = INTERNAL + "appGetCompanyNews.do";
 
-
-    //通过手机号重设支付密码
-    public static final String FIND_PWR_PAY__URL = INTERNAL + "findPwrPayByMobile.do";
-
-    //获得店铺评论列表
-    public static final String appGetDianpuComment = INTERNAL + "appGetDianpuComment.do";
-    //保存店铺评论
-    public static final String saveDianpuComment = INTERNAL + "saveDianpuComment.do";
-    //删除店铺评论
-    public static final String deleteDianpuComment = INTERNAL + "deleteDianpuComment.do";
 }
