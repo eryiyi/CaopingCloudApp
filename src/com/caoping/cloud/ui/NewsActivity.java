@@ -69,7 +69,7 @@ public class NewsActivity extends BaseActivity implements View.OnClickListener {
         this.findViewById(R.id.right_btn).setVisibility(View.GONE);
         title = (TextView) this.findViewById(R.id.title);
         right_img = (ImageView) this.findViewById(R.id.right_img);
-        title.setText("草原头条");
+        title.setText("基地头条");
         right_img.setVisibility(View.VISIBLE);
         right_img.setOnClickListener(this);
         mColumnHorizontalScrollView = (ColumnHorizontalScrollView) findViewById(R.id.mColumnHorizontalScrollView);

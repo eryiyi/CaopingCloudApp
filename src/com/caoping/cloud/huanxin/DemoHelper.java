@@ -11,6 +11,8 @@ import android.util.Log;
 import com.caoping.cloud.CaopingCloudApplication;
 import com.caoping.cloud.MainActivity;
 import com.caoping.cloud.R;
+import com.caoping.cloud.db.DBHelper;
+import com.caoping.cloud.entiy.Member;
 import com.caoping.cloud.huanxin.db.DemoDBManager;
 import com.caoping.cloud.huanxin.db.InviteMessgeDao;
 import com.caoping.cloud.huanxin.db.UserDao;
@@ -20,6 +22,7 @@ import com.caoping.cloud.huanxin.parse.UserProfileManager;
 import com.caoping.cloud.huanxin.receiver.CallReceiver;
 import com.caoping.cloud.huanxin.ui.ChatActivity;
 import com.caoping.cloud.huanxin.utils.PreferenceManager;
+import com.caoping.cloud.huanxin.utils.SharePrefConstant;
 import com.hyphenate.*;
 import com.hyphenate.chat.*;
 import com.hyphenate.chat.EMMessage.ChatType;
@@ -719,38 +722,60 @@ public class DemoHelper {
 			@Override
 			public void onMessageReceived(List<EMMessage> messages) {
 			    for (EMMessage message : messages) {
-                    message.setMsgTime(System.currentTimeMillis());
-                    //************接收并处理扩展消息***********************
-                    String userName = message.getStringAttribute("userName", "");
-                    String userPic = message.getStringAttribute("userPic", "");
-                    String hxIdFrom = message.getFrom();
-                    EaseUser easeUser = new EaseUser(hxIdFrom);
-                    easeUser.setAvatar(userPic);
-                    easeUser.setNick(userName);
+                    EMLog.d(TAG, "onMessageReceived id : " + message.getMsgId());
+                    // 先将头像和昵称保存在本地缓存
+                    try {
+                        String ChatUserId = message.getStringAttribute(SharePrefConstant.ChatUserId);
+                        String ChatUserPic = message.getStringAttribute(SharePrefConstant.ChatUserPic);
+                        String ChatUserNick = message.getStringAttribute(SharePrefConstant.ChatUserNick);
 
-                    // 存入内存
-                    getContactList();
-                    contactList.put(hxIdFrom, easeUser);
-                    // 存入db
-                    UserDao dao = new UserDao(CaopingCloudApplication.getInstance());
-                    List<EaseUser> users = new ArrayList<EaseUser>();
-                    users.add(easeUser);
-                    dao.saveContactList(users);
+                        Member emp = new Member();
+                        emp.setEmpId(ChatUserId);
+                        emp.setEmpCover(ChatUserPic);
+                        emp.setEmpName(ChatUserNick);
+                        DBHelper.getInstance(appContext).saveMember(emp);
 
-                    getModel().setContactSynced(true);
-
-                    // 通知listeners联系人同步完毕
-                    notifyContactsSyncListener(true);
-                    if (isGroupsSyncedWithServer()) {
-//                        notifyForRecevingEvents();
+                    } catch (HyphenateException e) {
+                        e.printStackTrace();
                     }
 
-                    // ******************扩展信息处理完成**********************
-			        EMLog.d(TAG, "onMessageReceived id : " + message.getMsgId());
-			        // in background, do not refresh UI, notify it in notification bar
-			        if(!easeUI.hasForegroundActivies()){
-			            getNotifier().onNewMsg(message);
-			        }
+
+                    DemoHelper.getInstance().getNotifier().onNewMsg(message);
+                    if(!easeUI.hasForegroundActivies()){
+                        getNotifier().onNewMsg(message);
+                    }
+//                    message.setMsgTime(System.currentTimeMillis());
+//                    //************接收并处理扩展消息***********************
+//                    String userName = message.getStringAttribute("userName", "");
+//                    String userPic = message.getStringAttribute("userPic", "");
+//                    String hxIdFrom = message.getFrom();
+//                    EaseUser easeUser = new EaseUser(hxIdFrom);
+//                    easeUser.setAvatar(userPic);
+//                    easeUser.setNick(userName);
+//
+//                    // 存入内存
+//                    getContactList();
+//                    contactList.put(hxIdFrom, easeUser);
+//                    // 存入db
+//                    UserDao dao = new UserDao(CaopingCloudApplication.getInstance());
+//                    List<EaseUser> users = new ArrayList<EaseUser>();
+//                    users.add(easeUser);
+//                    dao.saveContactList(users);
+//
+//                    getModel().setContactSynced(true);
+//
+//                    // 通知listeners联系人同步完毕
+//                    notifyContactsSyncListener(true);
+//                    if (isGroupsSyncedWithServer()) {
+////                        notifyForRecevingEvents();
+//                    }
+//
+//                    // ******************扩展信息处理完成**********************
+//			        EMLog.d(TAG, "onMessageReceived id : " + message.getMsgId());
+//			        // in background, do not refresh UI, notify it in notification bar
+//			        if(!easeUI.hasForegroundActivies()){
+//			            getNotifier().onNewMsg(message);
+//			        }
 			    }
 			}
 

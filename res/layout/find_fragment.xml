@@ -117,7 +117,7 @@
                                android:src="@drawable/sm_dscv_new"
                                android:layout_height="wrap_content"/>
                     <TextView android:layout_width="match_parent"
-                              android:text="草原头条"
+                              android:text="基地头条"
                               android:layout_marginRight="8dp"
                               android:drawableRight="@drawable/sm_post_more"
                               android:textSize="16sp"

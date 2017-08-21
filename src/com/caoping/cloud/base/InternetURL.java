@@ -178,7 +178,7 @@ public class InternetURL {
     public static final String GET_CITY_URL = INTERNAL + "appGetCity.do";
     //5获得地区
     public static final String GET_COUNTRY_URL = INTERNAL + "appGetArea.do";
-    //获得名企|公司|草原（公司）列表
+    //获得名企|公司|基地（公司）列表
     public static final String GET_COMPANY_MQ_URL = INTERNAL + "appGetCompanyList.do";
 
     //机械

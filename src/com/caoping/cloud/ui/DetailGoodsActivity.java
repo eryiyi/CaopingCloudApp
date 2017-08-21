@@ -184,16 +184,20 @@ public class DetailGoodsActivity extends BaseActivity implements MenuPopMenu.OnI
             case R.id.liner_lxmj:
             {
                 //联系卖家
-                if(cpObj != null){
+                if(cpObj != null && !StringUtil.isNullOrEmpty(cpObj.getEmp_mobile())){
+                    Intent intent = new Intent(Intent.ACTION_DIAL);
+                    Uri data = Uri.parse("tel:" + cpObj.getEmp_mobile());
+                    intent.setData(data);
+                    startActivity(intent);
                     //IM
-                    if(!cpObj.getEmp_id().equals(getGson().fromJson(getSp().getString("empId", ""), String.class))){
-                        Intent chatV = new Intent(DetailGoodsActivity.this, ChatActivity.class);
-                        chatV.putExtra("userId", cpObj.getEmp_id());
-                        chatV.putExtra("userName", cpObj.getEmp_name());
-                        startActivity(chatV);
-                    }else{
-                        Toast.makeText(DetailGoodsActivity.this, "不能和自己聊天！",Toast.LENGTH_SHORT).show();
-                    }
+//                    if(!cpObj.getEmp_id().equals(getGson().fromJson(getSp().getString("empId", ""), String.class))){
+//                        Intent chatV = new Intent(DetailGoodsActivity.this, ChatActivity.class);
+//                        chatV.putExtra("userId", cpObj.getEmp_id());
+//                        chatV.putExtra("userName", cpObj.getEmp_name());
+//                        startActivity(chatV);
+//                    }else{
+//                        Toast.makeText(DetailGoodsActivity.this, "不能和自己聊天！",Toast.LENGTH_SHORT).show();
+//                    }
                 }else {
                     showMsg(DetailGoodsActivity.this, "暂无卖家数据，请稍后重试！");
                 }
@@ -201,7 +205,7 @@ public class DetailGoodsActivity extends BaseActivity implements MenuPopMenu.OnI
                 break;
             case R.id.liner_tdcy:
             {
-                //他的草原
+                //他的基地
                 if(cpObj != null){
                     Intent intent = new Intent(DetailGoodsActivity.this, ProfileActivity.class);
                     intent.putExtra("emp_id", cpObj.getEmp_id());

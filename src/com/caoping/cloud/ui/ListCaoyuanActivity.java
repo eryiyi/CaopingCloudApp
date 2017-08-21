@@ -36,7 +36,7 @@ import java.util.Map;
 
 /**
  * Created by zhl on 2016/8/30.
- * 草原列表
+ * 基地列表
  */
 public class ListCaoyuanActivity extends BaseActivity implements View.OnClickListener {
     private EditText keywords;

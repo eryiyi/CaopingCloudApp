@@ -67,7 +67,7 @@ public class FindFragment extends BaseFragment  implements View.OnClickListener 
                 break;
             case R.id.liner_nearby_cy:
             {
-                //附近草原
+                //附近基地
                 Intent intent = new Intent(getActivity(), ListCaoyuanActivity.class);
                 intent.putExtra("tmpNearby", "1");
                 startActivity(intent);
@@ -75,7 +75,7 @@ public class FindFragment extends BaseFragment  implements View.OnClickListener 
                 break;
             case R.id.liner_head_news:
             {
-                //草原头条
+                //基地头条
                 Intent intent = new Intent(getActivity(), NewsActivity.class);
                 startActivity(intent);
             }

@@ -217,16 +217,20 @@ public class MineWuliuActivity extends BaseActivity implements View.OnClickListe
                         case 1:
                         {
                             //IM
-                            if(!StringUtil.isNullOrEmpty(transport.getEmp_id())){
+                            if(!StringUtil.isNullOrEmpty(transport.getEmp_id()) && !StringUtil.isNullOrEmpty(transport.getTel())){
+                                Intent intent = new Intent(Intent.ACTION_DIAL);
+                                Uri data = Uri.parse("tel:" + transport.getTel());
+                                intent.setData(data);
+                                startActivity(intent);
                                 //IM
-                                if(!transport.getEmp_id().equals(getGson().fromJson(getSp().getString("empId", ""), String.class))){
-                                    Intent chatV = new Intent(MineWuliuActivity.this, ChatActivity.class);
-                                    chatV.putExtra("userId", transport.getEmp_id());
-                                    chatV.putExtra("userName", transport.getEmp_name());
-                                    startActivity(chatV);
-                                }else{
-                                    Toast.makeText(MineWuliuActivity.this, "不能和自己聊天！",Toast.LENGTH_SHORT).show();
-                                }
+//                                if(!transport.getEmp_id().equals(getGson().fromJson(getSp().getString("empId", ""), String.class))){
+//                                    Intent chatV = new Intent(MineWuliuActivity.this, ChatActivity.class);
+//                                    chatV.putExtra("userId", transport.getEmp_id());
+//                                    chatV.putExtra("userName", transport.getEmp_name());
+//                                    startActivity(chatV);
+//                                }else{
+//                                    Toast.makeText(MineWuliuActivity.this, "不能和自己聊天！",Toast.LENGTH_SHORT).show();
+//                                }
 
                             }else{
                                 Toast.makeText(MineWuliuActivity.this, "暂无联系方式！",Toast.LENGTH_SHORT).show();

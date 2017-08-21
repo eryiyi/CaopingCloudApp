@@ -215,7 +215,7 @@
                           android:padding="8dp"
                           android:background="@drawable/zhuye_item_select"
                           android:textColor="@color/text_color"
-                          android:text="我的草原"
+                          android:text="我的基地"
                           android:layout_gravity="center"
                           android:gravity="center"
                           android:id="@+id/profile_txt_two"
@@ -294,7 +294,7 @@
             <!--</com.caoping.cloud.widget.NoScrollGridView>-->
 
             <!--<TextView android:layout_width="match_parent"-->
-                      <!--android:text="我的草原"-->
+                      <!--android:text="我的基地"-->
                       <!--android:textSize="16sp"-->
                       <!--android:padding="12sp"-->
                       <!--android:textColor="@color/text_color"-->

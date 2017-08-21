@@ -18,7 +18,7 @@ import java.util.List;
 
 /**
  * Created by Administrator on 2015/5/27.
- * 草原 类型
+ * 基地 类型
  */
 public class ItemCaoyuanTypeAdapter extends BaseAdapter {
     private ViewHolder holder;

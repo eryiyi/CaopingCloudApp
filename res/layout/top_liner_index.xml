@@ -29,6 +29,7 @@
                        android:layout_marginRight="8dp"
                        android:id="@+id/btn_scan"
                        android:onClick="scanAction"
+                       android:visibility="gone"
                        android:layout_centerVertical="true"
                        android:layout_height="30dp"/>
 
@@ -39,6 +40,7 @@
                   android:singleLine="true"
                   android:id="@+id/keywords"
                   android:hint="输入你正在找的"
+                  android:layout_marginLeft="8dp"
                   android:drawablePadding="15dp"
                   android:paddingLeft="8dp"
                   android:background="@drawable/et_white_bg"

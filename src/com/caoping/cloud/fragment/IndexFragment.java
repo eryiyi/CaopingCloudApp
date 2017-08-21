@@ -117,11 +117,11 @@ public class IndexFragment extends BaseFragment implements View.OnClickListener,
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (hasFocus) {
-                    if(!StringUtil.isNullOrEmpty(keywords.getText().toString())){
+//                    if(!StringUtil.isNullOrEmpty(keywords.getText().toString())){
                         Intent intent = new Intent(getActivity(), SearchActivity.class);
                         intent.putExtra("keywords", keywords.getText().toString());
                         startActivity(intent);
-                    }
+//                    }
                     keywords.clearFocus();//失去焦点
                 } else {
                     // 此处为失去焦点时的处理内容
@@ -239,7 +239,7 @@ public class IndexFragment extends BaseFragment implements View.OnClickListener,
         switch (v.getId()){
             case R.id.relate_news:
             {
-                //草原头条
+                //基地头条
                 Intent intent = new Intent(getActivity(), NewsActivity.class);
                 startActivity(intent);
             }
@@ -267,7 +267,7 @@ public class IndexFragment extends BaseFragment implements View.OnClickListener,
             break;
             case R.id.btn_three:
             {
-                //草原机械
+                //基地机械
                 Intent intent = new Intent(getActivity(), ListJixieActivity.class);
                 intent.putExtra("cloud_jixie_use_id", "");
                 intent.putExtra("tmpNearby", "0");
@@ -290,7 +290,7 @@ public class IndexFragment extends BaseFragment implements View.OnClickListener,
 //                break;
 //            case R.id.btn_xstj:
 //            {
-//                //草原机械
+//                //基地机械
 //                Intent intent = new Intent(getActivity(), ListJixieActivity.class);
 //                intent.putExtra("cloud_jixie_use_id", "");
 //                intent.putExtra("tmpNearby", "0");

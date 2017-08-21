@@ -94,7 +94,7 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
         initView();
         //获得他的头条
         getNews();
-        //获得他的草原信息
+        //获得他的基地信息
         getCp();
         //获得他的公司详情
         getDetail();
@@ -102,7 +102,7 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
         if(flagT){
             btn_gz.setVisibility(View.GONE);
             profile_btn_count_one.setText("我的头条");
-            profile_btn_count_two.setText("我的草原");
+            profile_btn_count_two.setText("我的基地");
         }
     }
 
@@ -275,7 +275,7 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
                                         imageLoader.displayImage(companyObj.getCompany_pic(), company_pic, CaopingCloudApplication.options, animateFirstListener);
                                         imageLoader.displayImage(companyObj.getEmp_cover(), cover, CaopingCloudApplication.txOptions, animateFirstListener);
                                     }else {
-                                        showMsg(ProfileActivity.this, "该用户尚未开通草原！");
+                                        showMsg(ProfileActivity.this, "该用户尚未开通基地！");
                                         finish();
                                     }
                                 }else{

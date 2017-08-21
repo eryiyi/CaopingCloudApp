@@ -27,10 +27,7 @@ import com.caoping.cloud.camera.util.MipcaActivityCapture;
 import com.caoping.cloud.data.CityDATA;
 import com.caoping.cloud.data.VersionUpdateObjData;
 import com.caoping.cloud.db.DBHelper;
-import com.caoping.cloud.entiy.City;
-import com.caoping.cloud.entiy.LxAd;
-import com.caoping.cloud.entiy.PayScanObj;
-import com.caoping.cloud.entiy.VersionUpdateObj;
+import com.caoping.cloud.entiy.*;
 import com.caoping.cloud.fragment.*;
 import com.caoping.cloud.huanxin.Constant;
 import com.caoping.cloud.huanxin.DemoHelper;
@@ -39,6 +36,7 @@ import com.caoping.cloud.huanxin.db.UserDao;
 import com.caoping.cloud.huanxin.runtimepermissions.PermissionsManager;
 import com.caoping.cloud.huanxin.runtimepermissions.PermissionsResultAction;
 import com.caoping.cloud.huanxin.ui.ConversationListFragment;
+import com.caoping.cloud.huanxin.utils.SharePrefConstant;
 import com.caoping.cloud.pinyin.PinyinComparator;
 import com.caoping.cloud.ui.*;
 import com.caoping.cloud.util.HttpUtils;
@@ -51,6 +49,7 @@ import com.hyphenate.chat.EMClient;
 import com.hyphenate.chat.EMCmdMessageBody;
 import com.hyphenate.chat.EMConversation;
 import com.hyphenate.chat.EMMessage;
+import com.hyphenate.exceptions.HyphenateException;
 import com.hyphenate.util.EMLog;
 import org.json.JSONObject;
 
@@ -616,6 +615,22 @@ public class MainActivity extends BaseActivity implements View.OnClickListener,M
             //顶部消息通知
             // notify new message
             for (EMMessage message : messages) {
+                // 先将头像和昵称保存在本地缓存
+                try {
+                    String ChatUserId = message.getStringAttribute(SharePrefConstant.ChatUserId);
+                    String ChatUserPic = message.getStringAttribute(SharePrefConstant.ChatUserPic);
+                    String ChatUserNick = message.getStringAttribute(SharePrefConstant.ChatUserNick);
+
+                    Member emp = new Member();
+                    emp.setEmpId(ChatUserId);
+                    emp.setEmpCover(ChatUserPic);
+                    emp.setEmpName(ChatUserNick);
+                    DBHelper.getInstance(MainActivity.this).saveMember(emp);
+
+                } catch (HyphenateException e) {
+                    e.printStackTrace();
+                }
+
                 DemoHelper.getInstance().getNotifier().onNewMsg(message);
             }
             refreshUIWithMessage();

@@ -144,7 +144,7 @@ public class WuliuTwoFragment extends BaseFragment  implements View.OnClickListe
                 Transport transport = lists1.get(position);
                 if(transport != null){
                     switch (flag){
-                        case 0:
+                        case 1:
                         {
                             //电话
                             if(!StringUtil.isNullOrEmpty( transport.getTel())){
@@ -156,10 +156,14 @@ public class WuliuTwoFragment extends BaseFragment  implements View.OnClickListe
 
                         }
                         break;
-                        case 1:
+                        case 0:
                         {
                             //IM
-                            if(!StringUtil.isNullOrEmpty(transport.getEmp_id())){
+                            if(!StringUtil.isNullOrEmpty(transport.getEmp_id()) && !StringUtil.isJson(transport.getTel())){
+//                                Intent intent = new Intent(Intent.ACTION_DIAL);
+//                                Uri data = Uri.parse("tel:" + transport.getTel());
+//                                intent.setData(data);
+//                                startActivity(intent);
                                 //IM
                                 if(!transport.getEmp_id().equals(getGson().fromJson(getSp().getString("empId", ""), String.class))){
                                     Intent chatV = new Intent(getActivity(), ChatActivity.class);

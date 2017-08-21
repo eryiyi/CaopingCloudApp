@@ -98,7 +98,7 @@
                           android:layout_gravity="center"
                           android:layout_height="wrap_content">
                 <TextView android:layout_width="wrap_content"
-                          android:text="他的草原\n10"
+                          android:text="他的基地\n10"
                           android:id="@+id/profile_btn_count_two"
                           android:textSize="16sp"
                           android:textColor="@color/text_color"

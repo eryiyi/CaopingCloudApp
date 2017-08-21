@@ -16,8 +16,15 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Toast;
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.caoping.cloud.MainActivity;
 import com.caoping.cloud.R;
+import com.caoping.cloud.base.InternetURL;
+import com.caoping.cloud.data.EmpsData;
 import com.caoping.cloud.db.DBHelper;
 import com.caoping.cloud.entiy.Member;
 import com.caoping.cloud.huanxin.Constant;
@@ -25,6 +32,7 @@ import com.caoping.cloud.huanxin.DemoHelper;
 import com.caoping.cloud.huanxin.domain.EmojiconExampleGroupData;
 import com.caoping.cloud.huanxin.domain.RobotUser;
 import com.caoping.cloud.huanxin.utils.RedPacketConstant;
+import com.caoping.cloud.huanxin.utils.SharePrefConstant;
 import com.caoping.cloud.huanxin.widget.ChatRowRedPacket;
 import com.caoping.cloud.huanxin.widget.ChatRowRedPacketAck;
 import com.caoping.cloud.huanxin.widget.ChatRowVoiceCall;
@@ -39,9 +47,13 @@ import com.hyphenate.easeui.widget.chatrow.EaseCustomChatRowProvider;
 import com.hyphenate.easeui.widget.emojicon.EaseEmojiconMenu;
 import com.hyphenate.util.EasyUtils;
 import com.hyphenate.util.PathUtil;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -225,8 +237,30 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
             //set message extension
             message.setAttribute("em_robot_message", isRobot);
         }
+        setUserInfoAttribute(message);
     }
-    
+
+    /**
+     * 设置用户的属性，
+     * 通过消息的扩展，传递客服系统用户的属性信息
+     * @param message
+     */
+    private void setUserInfoAttribute(EMMessage message) {
+        Member empCurrent = DBHelper.getInstance(getActivity()).getMemberId(message.getFrom());
+        if(empCurrent != null){
+            try {
+                message.setAttribute(SharePrefConstant.ChatUserId, empCurrent.getEmpId());
+                message.setAttribute(SharePrefConstant.ChatUserNick, empCurrent.getEmpName());
+                message.setAttribute(SharePrefConstant.ChatUserPic, empCurrent.getEmpCover()) ;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }else {
+            //数据库不存在该用户
+            appGetEmp(message.getFrom(), message);
+        }
+    }
+
     @Override
     public EaseCustomChatRowProvider onSetCustomChatRowProvider() {
         return new CustomChatRowProvider();
@@ -442,4 +476,66 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
 
     }
 
+    //获得好友资料
+    List<Member> emps = new ArrayList<Member>();
+    private void appGetEmp(final String hxUserNames,final EMMessage message) {
+        StringRequest request = new StringRequest(
+                Request.Method.POST,
+                InternetURL.GET_INVITE_CONTACT_URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String s) {
+                        if (StringUtil.isJson(s)) {
+                            try {
+                                JSONObject jo = new JSONObject(s);
+                                String code = jo.getString("code");
+                                if (Integer.parseInt(code) == 200) {
+                                    EmpsData data = getGson().fromJson(s, EmpsData.class);
+                                    //保存到数据库
+                                    if (data != null && data.getData() != null) {
+                                        for (Member recordMsg : data.getData()) {
+                                            Member recordMsgLocal = DBHelper.getInstance(getActivity()).getMemberId(recordMsg.getEmpId());
+                                            if (recordMsgLocal != null) {
+                                                //已经存在了 不需要插入了
+                                            } else {
+                                                DBHelper.getInstance(getActivity()).saveMember(recordMsg);
+                                                message.setAttribute(SharePrefConstant.ChatUserId, recordMsg.getEmpId());
+                                                message.setAttribute(SharePrefConstant.ChatUserNick, recordMsg.getEmpName());
+                                                message.setAttribute(SharePrefConstant.ChatUserPic, recordMsg.getEmpCover()) ;
+                                            }
+                                        }
+                                    }
+                                }else {
+                                    Toast.makeText(getActivity(), jo.getString("message"), Toast.LENGTH_SHORT).show();
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        } else {
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError volleyError) {
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("hxUserNames", hxUserNames);
+                return params;
+            }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("Content-Type", "application/x-www-form-urlencoded");
+                return params;
+            }
+        };
+        getRequestQueue().add(request);
+
+    }
 }

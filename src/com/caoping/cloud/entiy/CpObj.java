@@ -24,6 +24,7 @@ public class CpObj {
     //
     private String emp_name;
     private String emp_cover;
+    private String emp_mobile;
     private String cloud_caoping_guige_cont;
     private String cloud_caoping_type_cont;
     private String cloud_caoping_use_cont;
@@ -39,6 +40,14 @@ public class CpObj {
     private String cloud_jixie_use_cont;
 
     private String is_type;//0草坪 1草种 2机械
+
+    public String getEmp_mobile() {
+        return emp_mobile;
+    }
+
+    public void setEmp_mobile(String emp_mobile) {
+        this.emp_mobile = emp_mobile;
+    }
 
     public String getIs_type() {
         return is_type;
